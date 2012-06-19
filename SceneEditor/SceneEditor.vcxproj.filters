@@ -1,0 +1,1398 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="import">
+      <UniqueIdentifier>{10549164-cf81-4f62-b2db-893e67a90990}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine">
+      <UniqueIdentifier>{79f2b167-d237-4eee-bad1-054f5139592b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\base">
+      <UniqueIdentifier>{4322e6d3-5cf0-405b-91ed-d80bb6a659b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\draw2d">
+      <UniqueIdentifier>{8b5c4b8d-e7f7-4b61-ac4c-7de92d77bd41}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\engine">
+      <UniqueIdentifier>{cded76f0-a211-4cca-9f60-5da2426144f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\sound">
+      <UniqueIdentifier>{95af8b38-50df-43c8-ae86-d63f55e8a550}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="import\importinclude">
+      <UniqueIdentifier>{e690649d-1b65-45ed-889a-7554d1bbaaeb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="import\win32">
+      <UniqueIdentifier>{69c43ab9-5b3f-4c0c-8fb4-fb1dceb8aaab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="import\win32\arm">
+      <UniqueIdentifier>{d47d0d58-0b38-4ecb-9ad0-eecc427f35fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\sound\soundDecoder">
+      <UniqueIdentifier>{3d7f1eb5-fb58-4b3a-b7e6-0110397a654a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\sound\soundDecoder\mp3">
+      <UniqueIdentifier>{78d2cfc5-9052-48ff-ba8b-327385bfe4bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\sound\soundDecoder\ogg">
+      <UniqueIdentifier>{0e93dd7c-612a-4bc4-8ac9-d401e2838366}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\draw2d\imageFile">
+      <UniqueIdentifier>{966af32a-33f2-4cf0-b936-66c482313296}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\draw2d\imageFile\jpeg">
+      <UniqueIdentifier>{79b0a3f4-f9de-4c88-8177-7f2da689c771}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\draw2d\imageFile\png">
+      <UniqueIdentifier>{3a7f51ee-b467-487e-8483-c7d4a39c1f02}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\draw2d\imageFile\zlib">
+      <UniqueIdentifier>{899e077a-13bd-4290-86c7-49bb66367cbc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="import\win32\soundEngine_dll">
+      <UniqueIdentifier>{a4de497b-472e-4d58-964d-04f02a3e5e02}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="import\win32\soundEngine_dll\src">
+      <UniqueIdentifier>{8c307a89-e959-429e-9d48-c51a5d63fc5d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="classes">
+      <UniqueIdentifier>{eaa50cbb-e59f-4d99-aab3-84340f273c1c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ReadMe.txt" />
+    <None Include="res\file_view.ico">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\file_view_hc.ico">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\class_view.ico">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\class_view_hc.ico">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\fileview.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\fileview_hc.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\classview.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\classview_hc.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\explorer.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\explorer_hc.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\sort.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\sort_hc.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\menuimages.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\menuimages_hc.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\output_wnd.ico">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\output_wnd_hc.ico">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\properties_wnd.ico">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\properties_wnd_hc.ico">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\properties.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\properties_hc.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="UserImages.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\SceneEditor.rc2">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\SceneEditorDoc.ico">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\SceneEditor.ico">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\Toolbar.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\Toolbar256.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="import\win32\arm\armOp.asm">
+      <Filter>import\win32\arm</Filter>
+    </None>
+    <None Include="import\win32\arm\armasm.rules">
+      <Filter>import\win32\arm</Filter>
+    </None>
+    <None Include="ClassDiagram1.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="import\importInclude\clipboradImport.h">
+      <Filter>import\importinclude</Filter>
+    </ClInclude>
+    <ClInclude Include="import\importInclude\EditImport.h">
+      <Filter>import\importinclude</Filter>
+    </ClInclude>
+    <ClInclude Include="import\importInclude\FileImport.h">
+      <Filter>import\importinclude</Filter>
+    </ClInclude>
+    <ClInclude Include="import\importInclude\hPixels32ImportBase.h">
+      <Filter>import\importinclude</Filter>
+    </ClInclude>
+    <ClInclude Include="import\importInclude\InAppPurchase.h">
+      <Filter>import\importinclude</Filter>
+    </ClInclude>
+    <ClInclude Include="import\importInclude\IUpdateListenerBase.h">
+      <Filter>import\importinclude</Filter>
+    </ClInclude>
+    <ClInclude Include="import\importInclude\mmTimer.h">
+      <Filter>import\importinclude</Filter>
+    </ClInclude>
+    <ClInclude Include="import\importInclude\SoundImport.h">
+      <Filter>import\importinclude</Filter>
+    </ClInclude>
+    <ClInclude Include="import\importInclude\soundOut.h">
+      <Filter>import\importinclude</Filter>
+    </ClInclude>
+    <ClInclude Include="import\importInclude\SysImport.h">
+      <Filter>import\importinclude</Filter>
+    </ClInclude>
+    <ClInclude Include="import\importInclude\ThreadImport.h">
+      <Filter>import\importinclude</Filter>
+    </ClInclude>
+    <ClInclude Include="import\importInclude\WebImport.h">
+      <Filter>import\importinclude</Filter>
+    </ClInclude>
+    <ClInclude Include="import\win32\DDrawImport.h">
+      <Filter>import\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="import\win32\MIDIOut.h">
+      <Filter>import\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ViewTree.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MainFrm.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="OutputWnd.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="PropertiesWnd.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneEditor.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneEditorDoc.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneEditorView.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\base\Base64.h">
+      <Filter>GameEngine\base</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\base\CRC32.H">
+      <Filter>GameEngine\base</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\base\DownLoader.h">
+      <Filter>GameEngine\base</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\base\GamePackFile.h">
+      <Filter>GameEngine\base</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\base\hStream.h">
+      <Filter>GameEngine\base</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\base\IniFile.h">
+      <Filter>GameEngine\base</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\base\IntSet.h">
+      <Filter>GameEngine\base</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\base\md5.h">
+      <Filter>GameEngine\base</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\base\MyCrypt.h">
+      <Filter>GameEngine\base</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\base\MyDes.h">
+      <Filter>GameEngine\base</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\base\MyMD5Import.h">
+      <Filter>GameEngine\base</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\base\Rand.h">
+      <Filter>GameEngine\base</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\base\Rect.h">
+      <Filter>GameEngine\base</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\base\SysImportType.h">
+      <Filter>GameEngine\base</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\base\UndoRedo.h">
+      <Filter>GameEngine\base</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\base\Xml.h">
+      <Filter>GameEngine\base</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\draw2d\hBlend.h">
+      <Filter>GameEngine\draw2d</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\draw2d\hBlendAPixel.h">
+      <Filter>GameEngine\draw2d</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\draw2d\hColor32.h">
+      <Filter>GameEngine\draw2d</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\draw2d\hColorConvert.h">
+      <Filter>GameEngine\draw2d</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\draw2d\hDraw.h">
+      <Filter>GameEngine\draw2d</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\draw2d\hFilter.h">
+      <Filter>GameEngine\draw2d</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\draw2d\hPixels32.h">
+      <Filter>GameEngine\draw2d</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\draw2d\hPixels32Import.h">
+      <Filter>GameEngine\draw2d</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\draw2d\hPixels.h">
+      <Filter>GameEngine\draw2d</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\draw2d\hRotary.h">
+      <Filter>GameEngine\draw2d</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\draw2d\hZoom.h">
+      <Filter>GameEngine\draw2d</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\engine\GameRes.h">
+      <Filter>GameEngine\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\engine\IEventListener.h">
+      <Filter>GameEngine\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\engine\IInputIOListener.h">
+      <Filter>GameEngine\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\engine\INetIO.h">
+      <Filter>GameEngine\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\engine\INetLink.h">
+      <Filter>GameEngine\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\engine\SpritePosCfg.h">
+      <Filter>GameEngine\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\engine\VAction.h">
+      <Filter>GameEngine\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\engine\VBitmapBaseSprite.h">
+      <Filter>GameEngine\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\engine\VBitmapReflectionSprite.h">
+      <Filter>GameEngine\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\engine\VBitmapSprite.h">
+      <Filter>GameEngine\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\engine\VBmpButtonSprite.h">
+      <Filter>GameEngine\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\engine\VBmpNumberSprite.h">
+      <Filter>GameEngine\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\engine\VButtonSprite.h">
+      <Filter>GameEngine\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\engine\VCanvas.h">
+      <Filter>GameEngine\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\engine\VCharCanvas.h">
+      <Filter>GameEngine\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\engine\VClipborad.h">
+      <Filter>GameEngine\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\engine\VColorSprite.h">
+      <Filter>GameEngine\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\engine\VCom.h">
+      <Filter>GameEngine\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\engine\VComDataRec.h">
+      <Filter>GameEngine\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\engine\VCountDownSprite.h">
+      <Filter>GameEngine\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\engine\VDateTimeLabel.h">
+      <Filter>GameEngine\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\engine\VDispatcher.h">
+      <Filter>GameEngine\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\engine\VDragPageGridView.h">
+      <Filter>GameEngine\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\engine\VDrawPipe.h">
+      <Filter>GameEngine\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\engine\VEditSprite.h">
+      <Filter>GameEngine\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\engine\VFont.h">
+      <Filter>GameEngine\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\engine\VGame.h">
+      <Filter>GameEngine\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\engine\VGameCtrl.h">
+      <Filter>GameEngine\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\engine\VGrid9BitmapSprite.h">
+      <Filter>GameEngine\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\engine\VLabelSprite.h">
+      <Filter>GameEngine\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\engine\VLightBitmapSprite.h">
+      <Filter>GameEngine\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\engine\VLightFlashEffect.h">
+      <Filter>GameEngine\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\engine\VMemoSprite.h">
+      <Filter>GameEngine\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\engine\VMemoTextDragDrop.h">
+      <Filter>GameEngine\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\engine\VMotiveFrame.h">
+      <Filter>GameEngine\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\engine\VMoveBitmapSprite.h">
+      <Filter>GameEngine\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\engine\VNet.h">
+      <Filter>GameEngine\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\engine\VNetTCPLink.h">
+      <Filter>GameEngine\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\engine\VPageView.h">
+      <Filter>GameEngine\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\engine\VParticle.h">
+      <Filter>GameEngine\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\engine\VPopSprite.h">
+      <Filter>GameEngine\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\engine\VProgressSprite.h">
+      <Filter>GameEngine\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\engine\VRadioButtonSprite.h">
+      <Filter>GameEngine\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\engine\VRectLightFlashEffectSprite.h">
+      <Filter>GameEngine\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\engine\VScene.h">
+      <Filter>GameEngine\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\engine\VScreenScale.h">
+      <Filter>GameEngine\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\engine\VScrollBarSprite.h">
+      <Filter>GameEngine\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\engine\VSound.h">
+      <Filter>GameEngine\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\engine\VSprite.h">
+      <Filter>GameEngine\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\engine\VSpriteEngine.h">
+      <Filter>GameEngine\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\engine\VSurface.h">
+      <Filter>GameEngine\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\engine\VThread.h">
+      <Filter>GameEngine\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\engine\VTimerSprite.h">
+      <Filter>GameEngine\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\engine\VWaterSprite.h">
+      <Filter>GameEngine\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\engine\VWebBrowserSprite.h">
+      <Filter>GameEngine\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\sound\ISoundOut.h">
+      <Filter>GameEngine\sound</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\sound\SoundPlayer.h">
+      <Filter>GameEngine\sound</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\sound\wavDispose.h">
+      <Filter>GameEngine\sound</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\sound\soundDecoder\ISoundDecoder.h">
+      <Filter>GameEngine\sound\soundDecoder</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\sound\soundDecoder\Mp3Decoder.h">
+      <Filter>GameEngine\sound\soundDecoder</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\sound\soundDecoder\OggDecoder.h">
+      <Filter>GameEngine\sound\soundDecoder</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\sound\soundDecoder\WavDecoder.h">
+      <Filter>GameEngine\sound\soundDecoder</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\sound\soundDecoder\mp3\bit.h">
+      <Filter>GameEngine\sound\soundDecoder\mp3</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\sound\soundDecoder\mp3\config.h">
+      <Filter>GameEngine\sound\soundDecoder\mp3</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\sound\soundDecoder\mp3\D.dat.h">
+      <Filter>GameEngine\sound\soundDecoder\mp3</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\sound\soundDecoder\mp3\decoder.h">
+      <Filter>GameEngine\sound\soundDecoder\mp3</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\sound\soundDecoder\mp3\fixed.h">
+      <Filter>GameEngine\sound\soundDecoder\mp3</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\sound\soundDecoder\mp3\frame.h">
+      <Filter>GameEngine\sound\soundDecoder\mp3</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\sound\soundDecoder\mp3\global.h">
+      <Filter>GameEngine\sound\soundDecoder\mp3</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\sound\soundDecoder\mp3\huffman.h">
+      <Filter>GameEngine\sound\soundDecoder\mp3</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\sound\soundDecoder\mp3\imdct_s.dat.h">
+      <Filter>GameEngine\sound\soundDecoder\mp3</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\sound\soundDecoder\mp3\layer3.h">
+      <Filter>GameEngine\sound\soundDecoder\mp3</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\sound\soundDecoder\mp3\layer12.h">
+      <Filter>GameEngine\sound\soundDecoder\mp3</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\sound\soundDecoder\mp3\mad.h">
+      <Filter>GameEngine\sound\soundDecoder\mp3</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\sound\soundDecoder\mp3\qc_table.dat.h">
+      <Filter>GameEngine\sound\soundDecoder\mp3</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\sound\soundDecoder\mp3\rq_table.dat.h">
+      <Filter>GameEngine\sound\soundDecoder\mp3</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\sound\soundDecoder\mp3\sf_table.dat.h">
+      <Filter>GameEngine\sound\soundDecoder\mp3</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\sound\soundDecoder\mp3\stream.h">
+      <Filter>GameEngine\sound\soundDecoder\mp3</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\sound\soundDecoder\mp3\synth.h">
+      <Filter>GameEngine\sound\soundDecoder\mp3</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\sound\soundDecoder\mp3\timer.h">
+      <Filter>GameEngine\sound\soundDecoder\mp3</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\sound\soundDecoder\mp3\version.h">
+      <Filter>GameEngine\sound\soundDecoder\mp3</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\sound\soundDecoder\ogg\backends.h">
+      <Filter>GameEngine\sound\soundDecoder\ogg</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\sound\soundDecoder\ogg\bitrate.h">
+      <Filter>GameEngine\sound\soundDecoder\ogg</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\sound\soundDecoder\ogg\codebook.h">
+      <Filter>GameEngine\sound\soundDecoder\ogg</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\sound\soundDecoder\ogg\codec.h">
+      <Filter>GameEngine\sound\soundDecoder\ogg</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\sound\soundDecoder\ogg\codec_internal.h">
+      <Filter>GameEngine\sound\soundDecoder\ogg</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\sound\soundDecoder\ogg\envelope.h">
+      <Filter>GameEngine\sound\soundDecoder\ogg</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\sound\soundDecoder\ogg\highlevel.h">
+      <Filter>GameEngine\sound\soundDecoder\ogg</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\sound\soundDecoder\ogg\lookup.h">
+      <Filter>GameEngine\sound\soundDecoder\ogg</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\sound\soundDecoder\ogg\lookup_data.h">
+      <Filter>GameEngine\sound\soundDecoder\ogg</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\sound\soundDecoder\ogg\lpc.h">
+      <Filter>GameEngine\sound\soundDecoder\ogg</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\sound\soundDecoder\ogg\lsp.h">
+      <Filter>GameEngine\sound\soundDecoder\ogg</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\sound\soundDecoder\ogg\masking.h">
+      <Filter>GameEngine\sound\soundDecoder\ogg</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\sound\soundDecoder\ogg\mdct.h">
+      <Filter>GameEngine\sound\soundDecoder\ogg</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\sound\soundDecoder\ogg\misc.h">
+      <Filter>GameEngine\sound\soundDecoder\ogg</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\sound\soundDecoder\ogg\ogg.h">
+      <Filter>GameEngine\sound\soundDecoder\ogg</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\sound\soundDecoder\ogg\os.h">
+      <Filter>GameEngine\sound\soundDecoder\ogg</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\sound\soundDecoder\ogg\os_types.h">
+      <Filter>GameEngine\sound\soundDecoder\ogg</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\sound\soundDecoder\ogg\psy.h">
+      <Filter>GameEngine\sound\soundDecoder\ogg</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\sound\soundDecoder\ogg\registry.h">
+      <Filter>GameEngine\sound\soundDecoder\ogg</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\sound\soundDecoder\ogg\scales.h">
+      <Filter>GameEngine\sound\soundDecoder\ogg</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\sound\soundDecoder\ogg\smallft.h">
+      <Filter>GameEngine\sound\soundDecoder\ogg</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\sound\soundDecoder\ogg\vorbisfile.h">
+      <Filter>GameEngine\sound\soundDecoder\ogg</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\sound\soundDecoder\ogg\window.h">
+      <Filter>GameEngine\sound\soundDecoder\ogg</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\draw2d\imageFile\hBmpFile.h">
+      <Filter>GameEngine\draw2d\imageFile</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\draw2d\imageFile\hFh8File.h">
+      <Filter>GameEngine\draw2d\imageFile</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\draw2d\imageFile\hFhFile.h">
+      <Filter>GameEngine\draw2d\imageFile</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\draw2d\imageFile\hImgFile.h">
+      <Filter>GameEngine\draw2d\imageFile</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\draw2d\imageFile\hJpegFile.h">
+      <Filter>GameEngine\draw2d\imageFile</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\draw2d\imageFile\hPngFile.h">
+      <Filter>GameEngine\draw2d\imageFile</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\draw2d\imageFile\jpeg\jconfig.h">
+      <Filter>GameEngine\draw2d\imageFile\jpeg</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\draw2d\imageFile\jpeg\jdct.h">
+      <Filter>GameEngine\draw2d\imageFile\jpeg</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\draw2d\imageFile\jpeg\jerror.h">
+      <Filter>GameEngine\draw2d\imageFile\jpeg</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\draw2d\imageFile\jpeg\jinclude.h">
+      <Filter>GameEngine\draw2d\imageFile\jpeg</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\draw2d\imageFile\jpeg\jmemsys.h">
+      <Filter>GameEngine\draw2d\imageFile\jpeg</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\draw2d\imageFile\jpeg\jmorecfg.h">
+      <Filter>GameEngine\draw2d\imageFile\jpeg</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\draw2d\imageFile\jpeg\jpegint.h">
+      <Filter>GameEngine\draw2d\imageFile\jpeg</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\draw2d\imageFile\jpeg\jpeglib.h">
+      <Filter>GameEngine\draw2d\imageFile\jpeg</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\draw2d\imageFile\jpeg\jversion.h">
+      <Filter>GameEngine\draw2d\imageFile\jpeg</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\draw2d\imageFile\zlib\crc32z.h">
+      <Filter>GameEngine\draw2d\imageFile\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\draw2d\imageFile\zlib\deflate.h">
+      <Filter>GameEngine\draw2d\imageFile\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\draw2d\imageFile\zlib\inffast.h">
+      <Filter>GameEngine\draw2d\imageFile\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\draw2d\imageFile\zlib\inffixed.h">
+      <Filter>GameEngine\draw2d\imageFile\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\draw2d\imageFile\zlib\inflate.h">
+      <Filter>GameEngine\draw2d\imageFile\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\draw2d\imageFile\zlib\inftrees.h">
+      <Filter>GameEngine\draw2d\imageFile\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\draw2d\imageFile\zlib\trees.h">
+      <Filter>GameEngine\draw2d\imageFile\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\draw2d\imageFile\zlib\zconf.h">
+      <Filter>GameEngine\draw2d\imageFile\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\draw2d\imageFile\zlib\zlib.h">
+      <Filter>GameEngine\draw2d\imageFile\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\draw2d\imageFile\zlib\zutil.h">
+      <Filter>GameEngine\draw2d\imageFile\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\draw2d\imageFile\png\png.h">
+      <Filter>GameEngine\draw2d\imageFile\png</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\draw2d\imageFile\png\pngconf.h">
+      <Filter>GameEngine\draw2d\imageFile\png</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\draw2d\imageFile\png\pngpriv.h">
+      <Filter>GameEngine\draw2d\imageFile\png</Filter>
+    </ClInclude>
+    <ClInclude Include="import\win32\soundEngine_dll\src\HSoundPlayer.h">
+      <Filter>import\win32\soundEngine_dll\src</Filter>
+    </ClInclude>
+    <ClInclude Include="XTreeCtrl.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteView.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneView.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\MyGame.h">
+      <Filter>classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\MyGameCreate.h">
+      <Filter>classes</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteDraw.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="import\importInclude\FileImport.cpp">
+      <Filter>import\importinclude</Filter>
+    </ClCompile>
+    <ClCompile Include="import\importInclude\IUpdateListenerBase.cpp">
+      <Filter>import\importinclude</Filter>
+    </ClCompile>
+    <ClCompile Include="import\win32\clipboradImport.cpp">
+      <Filter>import\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="import\win32\DDrawImport.cpp">
+      <Filter>import\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="import\win32\hPixels32ImportBase.cpp">
+      <Filter>import\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="import\win32\InAppPurchase.cpp">
+      <Filter>import\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="import\win32\MIDIOut.cpp">
+      <Filter>import\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="import\win32\mmTimer.cpp">
+      <Filter>import\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="import\win32\SoundImport.cpp">
+      <Filter>import\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="import\win32\soundOut.cpp">
+      <Filter>import\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="import\win32\SysImport.cpp">
+      <Filter>import\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="import\win32\ThreadImport.cpp">
+      <Filter>import\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="import\win32\WebImport.cpp">
+      <Filter>import\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="ViewTree.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="MainFrm.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="OutputWnd.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="PropertiesWnd.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneEditor.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneEditorDoc.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneEditorView.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\base\Base64.cpp">
+      <Filter>GameEngine\base</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\base\CRC32.CPP">
+      <Filter>GameEngine\base</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\base\DownLoader.cpp">
+      <Filter>GameEngine\base</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\base\GamePackFile.cpp">
+      <Filter>GameEngine\base</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\base\hStream.cpp">
+      <Filter>GameEngine\base</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\base\IniFile.cpp">
+      <Filter>GameEngine\base</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\base\md5.c">
+      <Filter>GameEngine\base</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\base\MyCrypt.cpp">
+      <Filter>GameEngine\base</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\base\MyDes.cpp">
+      <Filter>GameEngine\base</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\base\MyMD5Import.cpp">
+      <Filter>GameEngine\base</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\base\Rand.cpp">
+      <Filter>GameEngine\base</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\base\Rect.cpp">
+      <Filter>GameEngine\base</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\base\SysImportType.cpp">
+      <Filter>GameEngine\base</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\base\UndoRedo.cpp">
+      <Filter>GameEngine\base</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\base\Xml.cpp">
+      <Filter>GameEngine\base</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\hBlend.cpp">
+      <Filter>GameEngine\draw2d</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\hColor32.cpp">
+      <Filter>GameEngine\draw2d</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\hColorConvert.cpp">
+      <Filter>GameEngine\draw2d</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\hDraw.cpp">
+      <Filter>GameEngine\draw2d</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\hFilter.cpp">
+      <Filter>GameEngine\draw2d</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\hPixels32.cpp">
+      <Filter>GameEngine\draw2d</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\hPixels32Import.cpp">
+      <Filter>GameEngine\draw2d</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\hRotary.cpp">
+      <Filter>GameEngine\draw2d</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\hZoom.cpp">
+      <Filter>GameEngine\draw2d</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\engine\GameRes.cpp">
+      <Filter>GameEngine\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\engine\SpritePosCfg.cpp">
+      <Filter>GameEngine\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\engine\VAction.cpp">
+      <Filter>GameEngine\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\engine\VBitmapBaseSprite.cpp">
+      <Filter>GameEngine\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\engine\VBitmapReflectionSprite.cpp">
+      <Filter>GameEngine\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\engine\VBitmapSprite.cpp">
+      <Filter>GameEngine\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\engine\VBmpButtonSprite.cpp">
+      <Filter>GameEngine\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\engine\VBmpNumberSprite.cpp">
+      <Filter>GameEngine\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\engine\VButtonSprite.cpp">
+      <Filter>GameEngine\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\engine\VCanvas.cpp">
+      <Filter>GameEngine\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\engine\VCharCanvas.cpp">
+      <Filter>GameEngine\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\engine\VClipborad.cpp">
+      <Filter>GameEngine\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\engine\VColorSprite.cpp">
+      <Filter>GameEngine\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\engine\VCom.cpp">
+      <Filter>GameEngine\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\engine\VCountDownSprite.cpp">
+      <Filter>GameEngine\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\engine\VDateTimeLabel.cpp">
+      <Filter>GameEngine\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\engine\VDispatcher.cpp">
+      <Filter>GameEngine\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\engine\VDragPageGridView.cpp">
+      <Filter>GameEngine\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\engine\VDrawPipe.cpp">
+      <Filter>GameEngine\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\engine\VEditSprite.cpp">
+      <Filter>GameEngine\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\engine\VFont.cpp">
+      <Filter>GameEngine\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\engine\VGame.cpp">
+      <Filter>GameEngine\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\engine\VGameCtrl.cpp">
+      <Filter>GameEngine\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\engine\VGrid9BitmapSprite.cpp">
+      <Filter>GameEngine\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\engine\VLabelSprite.cpp">
+      <Filter>GameEngine\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\engine\VLightBitmapSprite.cpp">
+      <Filter>GameEngine\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\engine\VLightFlashEffect.cpp">
+      <Filter>GameEngine\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\engine\VMemoSprite.cpp">
+      <Filter>GameEngine\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\engine\VMemoTextDragDrop.cpp">
+      <Filter>GameEngine\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\engine\VMotiveFrame.cpp">
+      <Filter>GameEngine\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\engine\VMoveBitmapSprite.cpp">
+      <Filter>GameEngine\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\engine\VNet.cpp">
+      <Filter>GameEngine\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\engine\VNetTCPLink.cpp">
+      <Filter>GameEngine\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\engine\VPageView.cpp">
+      <Filter>GameEngine\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\engine\VParticle.cpp">
+      <Filter>GameEngine\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\engine\VPopSprite.cpp">
+      <Filter>GameEngine\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\engine\VProgressSprite.cpp">
+      <Filter>GameEngine\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\engine\VRadioButtonSprite.cpp">
+      <Filter>GameEngine\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\engine\VRectLightFlashEffectSprite.cpp">
+      <Filter>GameEngine\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\engine\VScene.cpp">
+      <Filter>GameEngine\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\engine\VScreenScale.cpp">
+      <Filter>GameEngine\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\engine\VScrollBarSprite.cpp">
+      <Filter>GameEngine\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\engine\VSound.cpp">
+      <Filter>GameEngine\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\engine\VSprite.cpp">
+      <Filter>GameEngine\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\engine\VSpriteEngine.cpp">
+      <Filter>GameEngine\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\engine\VSurface.cpp">
+      <Filter>GameEngine\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\engine\VThread.cpp">
+      <Filter>GameEngine\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\engine\VTimerSprite.cpp">
+      <Filter>GameEngine\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\engine\VWaterSprite.cpp">
+      <Filter>GameEngine\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\engine\VWebBrowserSprite.cpp">
+      <Filter>GameEngine\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\sound\SoundPlayer.cpp">
+      <Filter>GameEngine\sound</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\sound\wavDispose.cpp">
+      <Filter>GameEngine\sound</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\sound\soundDecoder\Mp3Decoder.cpp">
+      <Filter>GameEngine\sound\soundDecoder</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\sound\soundDecoder\OggDecoder.cpp">
+      <Filter>GameEngine\sound\soundDecoder</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\sound\soundDecoder\WavDecoder.cpp">
+      <Filter>GameEngine\sound\soundDecoder</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\sound\soundDecoder\mp3\bit.c">
+      <Filter>GameEngine\sound\soundDecoder\mp3</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\sound\soundDecoder\mp3\decoder.c">
+      <Filter>GameEngine\sound\soundDecoder\mp3</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\sound\soundDecoder\mp3\fixed.c">
+      <Filter>GameEngine\sound\soundDecoder\mp3</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\sound\soundDecoder\mp3\frame.c">
+      <Filter>GameEngine\sound\soundDecoder\mp3</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\sound\soundDecoder\mp3\huffman.c">
+      <Filter>GameEngine\sound\soundDecoder\mp3</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\sound\soundDecoder\mp3\layer3.c">
+      <Filter>GameEngine\sound\soundDecoder\mp3</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\sound\soundDecoder\mp3\layer12.c">
+      <Filter>GameEngine\sound\soundDecoder\mp3</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\sound\soundDecoder\mp3\stream.c">
+      <Filter>GameEngine\sound\soundDecoder\mp3</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\sound\soundDecoder\mp3\synth.c">
+      <Filter>GameEngine\sound\soundDecoder\mp3</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\sound\soundDecoder\mp3\timer.c">
+      <Filter>GameEngine\sound\soundDecoder\mp3</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\sound\soundDecoder\mp3\version.c">
+      <Filter>GameEngine\sound\soundDecoder\mp3</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\sound\soundDecoder\ogg\analysis.c">
+      <Filter>GameEngine\sound\soundDecoder\ogg</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\sound\soundDecoder\ogg\bitrate.c">
+      <Filter>GameEngine\sound\soundDecoder\ogg</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\sound\soundDecoder\ogg\bitwise.c">
+      <Filter>GameEngine\sound\soundDecoder\ogg</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\sound\soundDecoder\ogg\block.c">
+      <Filter>GameEngine\sound\soundDecoder\ogg</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\sound\soundDecoder\ogg\codebook.c">
+      <Filter>GameEngine\sound\soundDecoder\ogg</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\sound\soundDecoder\ogg\envelope.c">
+      <Filter>GameEngine\sound\soundDecoder\ogg</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\sound\soundDecoder\ogg\floor0.c">
+      <Filter>GameEngine\sound\soundDecoder\ogg</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\sound\soundDecoder\ogg\floor1.c">
+      <Filter>GameEngine\sound\soundDecoder\ogg</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\sound\soundDecoder\ogg\framing.c">
+      <Filter>GameEngine\sound\soundDecoder\ogg</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\sound\soundDecoder\ogg\info.c">
+      <Filter>GameEngine\sound\soundDecoder\ogg</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\sound\soundDecoder\ogg\lookup.c">
+      <Filter>GameEngine\sound\soundDecoder\ogg</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\sound\soundDecoder\ogg\lpc.c">
+      <Filter>GameEngine\sound\soundDecoder\ogg</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\sound\soundDecoder\ogg\lsp.c">
+      <Filter>GameEngine\sound\soundDecoder\ogg</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\sound\soundDecoder\ogg\mapping0.c">
+      <Filter>GameEngine\sound\soundDecoder\ogg</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\sound\soundDecoder\ogg\mdct.c">
+      <Filter>GameEngine\sound\soundDecoder\ogg</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\sound\soundDecoder\ogg\psy.c">
+      <Filter>GameEngine\sound\soundDecoder\ogg</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\sound\soundDecoder\ogg\registry.c">
+      <Filter>GameEngine\sound\soundDecoder\ogg</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\sound\soundDecoder\ogg\res0.c">
+      <Filter>GameEngine\sound\soundDecoder\ogg</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\sound\soundDecoder\ogg\sharedbook.c">
+      <Filter>GameEngine\sound\soundDecoder\ogg</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\sound\soundDecoder\ogg\smallft.c">
+      <Filter>GameEngine\sound\soundDecoder\ogg</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\sound\soundDecoder\ogg\synthesis.c">
+      <Filter>GameEngine\sound\soundDecoder\ogg</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\sound\soundDecoder\ogg\vorbisfile.c">
+      <Filter>GameEngine\sound\soundDecoder\ogg</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\sound\soundDecoder\ogg\window.c">
+      <Filter>GameEngine\sound\soundDecoder\ogg</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\imageFile\hBmpFile.cpp">
+      <Filter>GameEngine\draw2d\imageFile</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\imageFile\hFh8File.cpp">
+      <Filter>GameEngine\draw2d\imageFile</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\imageFile\hFhFile.cpp">
+      <Filter>GameEngine\draw2d\imageFile</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\imageFile\hImgFile.cpp">
+      <Filter>GameEngine\draw2d\imageFile</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\imageFile\hJpegFile.cpp">
+      <Filter>GameEngine\draw2d\imageFile</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\imageFile\hPngFile.cpp">
+      <Filter>GameEngine\draw2d\imageFile</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jaricom.c">
+      <Filter>GameEngine\draw2d\imageFile\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jcapimin.c">
+      <Filter>GameEngine\draw2d\imageFile\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jcapistd.c">
+      <Filter>GameEngine\draw2d\imageFile\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jcarith.c">
+      <Filter>GameEngine\draw2d\imageFile\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jccoefct.c">
+      <Filter>GameEngine\draw2d\imageFile\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jccolor.c">
+      <Filter>GameEngine\draw2d\imageFile\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jcdctmgr.c">
+      <Filter>GameEngine\draw2d\imageFile\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jchuff.c">
+      <Filter>GameEngine\draw2d\imageFile\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jcinit.c">
+      <Filter>GameEngine\draw2d\imageFile\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jcmainct.c">
+      <Filter>GameEngine\draw2d\imageFile\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jcmarker.c">
+      <Filter>GameEngine\draw2d\imageFile\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jcmaster.c">
+      <Filter>GameEngine\draw2d\imageFile\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jcomapi.c">
+      <Filter>GameEngine\draw2d\imageFile\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jcparam.c">
+      <Filter>GameEngine\draw2d\imageFile\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jcprepct.c">
+      <Filter>GameEngine\draw2d\imageFile\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jcsample.c">
+      <Filter>GameEngine\draw2d\imageFile\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jctrans.c">
+      <Filter>GameEngine\draw2d\imageFile\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jdapimin.c">
+      <Filter>GameEngine\draw2d\imageFile\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jdapistd.c">
+      <Filter>GameEngine\draw2d\imageFile\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jdarith.c">
+      <Filter>GameEngine\draw2d\imageFile\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jdatadst.c">
+      <Filter>GameEngine\draw2d\imageFile\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jdatasrc.c">
+      <Filter>GameEngine\draw2d\imageFile\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jdcoefct.c">
+      <Filter>GameEngine\draw2d\imageFile\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jdcolor.c">
+      <Filter>GameEngine\draw2d\imageFile\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jddctmgr.c">
+      <Filter>GameEngine\draw2d\imageFile\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jdhuff.c">
+      <Filter>GameEngine\draw2d\imageFile\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jdinput.c">
+      <Filter>GameEngine\draw2d\imageFile\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jdmainct.c">
+      <Filter>GameEngine\draw2d\imageFile\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jdmarker.c">
+      <Filter>GameEngine\draw2d\imageFile\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jdmaster.c">
+      <Filter>GameEngine\draw2d\imageFile\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jdmerge.c">
+      <Filter>GameEngine\draw2d\imageFile\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jdpostct.c">
+      <Filter>GameEngine\draw2d\imageFile\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jdsample.c">
+      <Filter>GameEngine\draw2d\imageFile\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jdtrans.c">
+      <Filter>GameEngine\draw2d\imageFile\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jerror.c">
+      <Filter>GameEngine\draw2d\imageFile\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jfdctflt.c">
+      <Filter>GameEngine\draw2d\imageFile\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jfdctfst.c">
+      <Filter>GameEngine\draw2d\imageFile\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jfdctint.c">
+      <Filter>GameEngine\draw2d\imageFile\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jidctflt.c">
+      <Filter>GameEngine\draw2d\imageFile\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jidctfst.c">
+      <Filter>GameEngine\draw2d\imageFile\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jidctint.c">
+      <Filter>GameEngine\draw2d\imageFile\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jmemmgr.c">
+      <Filter>GameEngine\draw2d\imageFile\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jmemnobs.c">
+      <Filter>GameEngine\draw2d\imageFile\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jquant1.c">
+      <Filter>GameEngine\draw2d\imageFile\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jquant2.c">
+      <Filter>GameEngine\draw2d\imageFile\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jutils.c">
+      <Filter>GameEngine\draw2d\imageFile\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\imageFile\zlib\adler32.c">
+      <Filter>GameEngine\draw2d\imageFile\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\imageFile\zlib\compress.c">
+      <Filter>GameEngine\draw2d\imageFile\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\imageFile\zlib\crc32z.c">
+      <Filter>GameEngine\draw2d\imageFile\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\imageFile\zlib\deflate.c">
+      <Filter>GameEngine\draw2d\imageFile\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\imageFile\zlib\infback.c">
+      <Filter>GameEngine\draw2d\imageFile\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\imageFile\zlib\inffast.c">
+      <Filter>GameEngine\draw2d\imageFile\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\imageFile\zlib\inflate.c">
+      <Filter>GameEngine\draw2d\imageFile\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\imageFile\zlib\inftrees.c">
+      <Filter>GameEngine\draw2d\imageFile\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\imageFile\zlib\trees.c">
+      <Filter>GameEngine\draw2d\imageFile\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\imageFile\zlib\uncompr.c">
+      <Filter>GameEngine\draw2d\imageFile\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\imageFile\zlib\zutil.c">
+      <Filter>GameEngine\draw2d\imageFile\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\imageFile\png\png.c">
+      <Filter>GameEngine\draw2d\imageFile\png</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\imageFile\png\pngerror.c">
+      <Filter>GameEngine\draw2d\imageFile\png</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\imageFile\png\pngget.c">
+      <Filter>GameEngine\draw2d\imageFile\png</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\imageFile\png\pngmem.c">
+      <Filter>GameEngine\draw2d\imageFile\png</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\imageFile\png\pngpread.c">
+      <Filter>GameEngine\draw2d\imageFile\png</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\imageFile\png\pngread.c">
+      <Filter>GameEngine\draw2d\imageFile\png</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\imageFile\png\pngrio.c">
+      <Filter>GameEngine\draw2d\imageFile\png</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\imageFile\png\pngrtran.c">
+      <Filter>GameEngine\draw2d\imageFile\png</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\imageFile\png\pngrutil.c">
+      <Filter>GameEngine\draw2d\imageFile\png</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\imageFile\png\pngset.c">
+      <Filter>GameEngine\draw2d\imageFile\png</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\imageFile\png\pngtrans.c">
+      <Filter>GameEngine\draw2d\imageFile\png</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\imageFile\png\pngwio.c">
+      <Filter>GameEngine\draw2d\imageFile\png</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\imageFile\png\pngwrite.c">
+      <Filter>GameEngine\draw2d\imageFile\png</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\imageFile\png\pngwtran.c">
+      <Filter>GameEngine\draw2d\imageFile\png</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\draw2d\imageFile\png\pngwutil.c">
+      <Filter>GameEngine\draw2d\imageFile\png</Filter>
+    </ClCompile>
+    <ClCompile Include="import\win32\soundEngine_dll\src\HSoundPlayer.cpp">
+      <Filter>import\win32\soundEngine_dll\src</Filter>
+    </ClCompile>
+    <ClCompile Include="XTreeCtrl.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="SpriteView.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneView.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\MyGame.cpp">
+      <Filter>classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\MyGameCreate.cpp">
+      <Filter>classes</Filter>
+    </ClCompile>
+    <ClCompile Include="SpriteDraw.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="SceneEditor.rc">
+      <Filter>资源文件</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

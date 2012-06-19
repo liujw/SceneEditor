@@ -1,0 +1,557 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{7E6E30E5-D5B1-4337-8DBA-F385222AF3E0}</ProjectGuid>
+    <RootNamespace>SceneEditor</RootNamespace>
+    <Keyword>MFCProj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>.\GameEngine\draw2d;.\GameEngine\engine;.\GameEngine\base;.\import\win32;.\import\importInclude;.\import;.\GameEngine;D:\Documents and Settings\liujw\桌面\SceneEditor\SceneEditor\Classes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <UseUnicodeForAssemblerListing>
+      </UseUnicodeForAssemblerListing>
+      <DisableSpecificWarnings>4819;4018;4244</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <ValidateAllParameters>true</ValidateAllParameters>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0804</Culture>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <ValidateAllParameters>true</ValidateAllParameters>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0804</Culture>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
+    <None Include="import\win32\arm\armasm.rules" />
+    <None Include="import\win32\arm\armOp.asm" />
+    <None Include="ReadMe.txt" />
+    <None Include="res\classview.bmp" />
+    <None Include="res\classview_hc.bmp" />
+    <None Include="res\class_view.ico" />
+    <None Include="res\class_view_hc.ico" />
+    <None Include="res\explorer.bmp" />
+    <None Include="res\explorer_hc.bmp" />
+    <None Include="res\fileview.bmp" />
+    <None Include="res\fileview_hc.bmp" />
+    <None Include="res\file_view.ico" />
+    <None Include="res\file_view_hc.ico" />
+    <None Include="res\menuimages.bmp" />
+    <None Include="res\menuimages_hc.bmp" />
+    <None Include="res\output_wnd.ico" />
+    <None Include="res\output_wnd_hc.ico" />
+    <None Include="res\properties.bmp" />
+    <None Include="res\properties_hc.bmp" />
+    <None Include="res\properties_wnd.ico" />
+    <None Include="res\properties_wnd_hc.ico" />
+    <None Include="res\SceneEditor.ico" />
+    <None Include="res\SceneEditor.rc2" />
+    <None Include="res\SceneEditorDoc.ico" />
+    <None Include="res\sort.bmp" />
+    <None Include="res\sort_hc.bmp" />
+    <None Include="res\Toolbar.bmp" />
+    <None Include="res\Toolbar256.bmp" />
+    <None Include="UserImages.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Classes\MyGame.h" />
+    <ClInclude Include="Classes\MyGameCreate.h" />
+    <ClInclude Include="SceneView.h" />
+    <ClInclude Include="SpriteView.h" />
+    <ClInclude Include="GameEngine\base\Base64.h" />
+    <ClInclude Include="GameEngine\base\CRC32.H" />
+    <ClInclude Include="GameEngine\base\DownLoader.h" />
+    <ClInclude Include="GameEngine\base\GamePackFile.h" />
+    <ClInclude Include="GameEngine\base\hStream.h" />
+    <ClInclude Include="GameEngine\base\IniFile.h" />
+    <ClInclude Include="GameEngine\base\IntSet.h" />
+    <ClInclude Include="GameEngine\base\md5.h" />
+    <ClInclude Include="GameEngine\base\MyCrypt.h" />
+    <ClInclude Include="GameEngine\base\MyDes.h" />
+    <ClInclude Include="GameEngine\base\MyMD5Import.h" />
+    <ClInclude Include="GameEngine\base\Rand.h" />
+    <ClInclude Include="GameEngine\base\Rect.h" />
+    <ClInclude Include="GameEngine\base\SysImportType.h" />
+    <ClInclude Include="GameEngine\base\UndoRedo.h" />
+    <ClInclude Include="GameEngine\base\Xml.h" />
+    <ClInclude Include="GameEngine\draw2d\hBlend.h" />
+    <ClInclude Include="GameEngine\draw2d\hBlendAPixel.h" />
+    <ClInclude Include="GameEngine\draw2d\hColor32.h" />
+    <ClInclude Include="GameEngine\draw2d\hColorConvert.h" />
+    <ClInclude Include="GameEngine\draw2d\hDraw.h" />
+    <ClInclude Include="GameEngine\draw2d\hFilter.h" />
+    <ClInclude Include="GameEngine\draw2d\hPixels.h" />
+    <ClInclude Include="GameEngine\draw2d\hPixels32.h" />
+    <ClInclude Include="GameEngine\draw2d\hPixels32Import.h" />
+    <ClInclude Include="GameEngine\draw2d\hRotary.h" />
+    <ClInclude Include="GameEngine\draw2d\hZoom.h" />
+    <ClInclude Include="GameEngine\draw2d\imageFile\hBmpFile.h" />
+    <ClInclude Include="GameEngine\draw2d\imageFile\hFh8File.h" />
+    <ClInclude Include="GameEngine\draw2d\imageFile\hFhFile.h" />
+    <ClInclude Include="GameEngine\draw2d\imageFile\hImgFile.h" />
+    <ClInclude Include="GameEngine\draw2d\imageFile\hJpegFile.h" />
+    <ClInclude Include="GameEngine\draw2d\imageFile\hPngFile.h" />
+    <ClInclude Include="GameEngine\draw2d\imageFile\jpeg\jconfig.h" />
+    <ClInclude Include="GameEngine\draw2d\imageFile\jpeg\jdct.h" />
+    <ClInclude Include="GameEngine\draw2d\imageFile\jpeg\jerror.h" />
+    <ClInclude Include="GameEngine\draw2d\imageFile\jpeg\jinclude.h" />
+    <ClInclude Include="GameEngine\draw2d\imageFile\jpeg\jmemsys.h" />
+    <ClInclude Include="GameEngine\draw2d\imageFile\jpeg\jmorecfg.h" />
+    <ClInclude Include="GameEngine\draw2d\imageFile\jpeg\jpegint.h" />
+    <ClInclude Include="GameEngine\draw2d\imageFile\jpeg\jpeglib.h" />
+    <ClInclude Include="GameEngine\draw2d\imageFile\jpeg\jversion.h" />
+    <ClInclude Include="GameEngine\draw2d\imageFile\png\png.h" />
+    <ClInclude Include="GameEngine\draw2d\imageFile\png\pngconf.h" />
+    <ClInclude Include="GameEngine\draw2d\imageFile\png\pngpriv.h" />
+    <ClInclude Include="GameEngine\draw2d\imageFile\zlib\crc32z.h" />
+    <ClInclude Include="GameEngine\draw2d\imageFile\zlib\deflate.h" />
+    <ClInclude Include="GameEngine\draw2d\imageFile\zlib\inffast.h" />
+    <ClInclude Include="GameEngine\draw2d\imageFile\zlib\inffixed.h" />
+    <ClInclude Include="GameEngine\draw2d\imageFile\zlib\inflate.h" />
+    <ClInclude Include="GameEngine\draw2d\imageFile\zlib\inftrees.h" />
+    <ClInclude Include="GameEngine\draw2d\imageFile\zlib\trees.h" />
+    <ClInclude Include="GameEngine\draw2d\imageFile\zlib\zconf.h" />
+    <ClInclude Include="GameEngine\draw2d\imageFile\zlib\zlib.h" />
+    <ClInclude Include="GameEngine\draw2d\imageFile\zlib\zutil.h" />
+    <ClInclude Include="GameEngine\engine\GameRes.h" />
+    <ClInclude Include="GameEngine\engine\IEventListener.h" />
+    <ClInclude Include="GameEngine\engine\IInputIOListener.h" />
+    <ClInclude Include="GameEngine\engine\INetIO.h" />
+    <ClInclude Include="GameEngine\engine\INetLink.h" />
+    <ClInclude Include="GameEngine\engine\SpritePosCfg.h" />
+    <ClInclude Include="GameEngine\engine\VAction.h" />
+    <ClInclude Include="GameEngine\engine\VBitmapBaseSprite.h" />
+    <ClInclude Include="GameEngine\engine\VBitmapReflectionSprite.h" />
+    <ClInclude Include="GameEngine\engine\VBitmapSprite.h" />
+    <ClInclude Include="GameEngine\engine\VBmpButtonSprite.h" />
+    <ClInclude Include="GameEngine\engine\VBmpNumberSprite.h" />
+    <ClInclude Include="GameEngine\engine\VButtonSprite.h" />
+    <ClInclude Include="GameEngine\engine\VCanvas.h" />
+    <ClInclude Include="GameEngine\engine\VCharCanvas.h" />
+    <ClInclude Include="GameEngine\engine\VClipborad.h" />
+    <ClInclude Include="GameEngine\engine\VColorSprite.h" />
+    <ClInclude Include="GameEngine\engine\VCom.h" />
+    <ClInclude Include="GameEngine\engine\VComDataRec.h" />
+    <ClInclude Include="GameEngine\engine\VCountDownSprite.h" />
+    <ClInclude Include="GameEngine\engine\VDateTimeLabel.h" />
+    <ClInclude Include="GameEngine\engine\VDispatcher.h" />
+    <ClInclude Include="GameEngine\engine\VDragPageGridView.h" />
+    <ClInclude Include="GameEngine\engine\VDrawPipe.h" />
+    <ClInclude Include="GameEngine\engine\VEditSprite.h" />
+    <ClInclude Include="GameEngine\engine\VFont.h" />
+    <ClInclude Include="GameEngine\engine\VGame.h" />
+    <ClInclude Include="GameEngine\engine\VGameCtrl.h" />
+    <ClInclude Include="GameEngine\engine\VGrid9BitmapSprite.h" />
+    <ClInclude Include="GameEngine\engine\VLabelSprite.h" />
+    <ClInclude Include="GameEngine\engine\VLightBitmapSprite.h" />
+    <ClInclude Include="GameEngine\engine\VLightFlashEffect.h" />
+    <ClInclude Include="GameEngine\engine\VMemoSprite.h" />
+    <ClInclude Include="GameEngine\engine\VMemoTextDragDrop.h" />
+    <ClInclude Include="GameEngine\engine\VMotiveFrame.h" />
+    <ClInclude Include="GameEngine\engine\VMoveBitmapSprite.h" />
+    <ClInclude Include="GameEngine\engine\VNet.h" />
+    <ClInclude Include="GameEngine\engine\VNetTCPLink.h" />
+    <ClInclude Include="GameEngine\engine\VPageView.h" />
+    <ClInclude Include="GameEngine\engine\VParticle.h" />
+    <ClInclude Include="GameEngine\engine\VPopSprite.h" />
+    <ClInclude Include="GameEngine\engine\VProgressSprite.h" />
+    <ClInclude Include="GameEngine\engine\VRadioButtonSprite.h" />
+    <ClInclude Include="GameEngine\engine\VRectLightFlashEffectSprite.h" />
+    <ClInclude Include="GameEngine\engine\VScene.h" />
+    <ClInclude Include="GameEngine\engine\VScreenScale.h" />
+    <ClInclude Include="GameEngine\engine\VScrollBarSprite.h" />
+    <ClInclude Include="GameEngine\engine\VSound.h" />
+    <ClInclude Include="GameEngine\engine\VSprite.h" />
+    <ClInclude Include="GameEngine\engine\VSpriteEngine.h" />
+    <ClInclude Include="GameEngine\engine\VSurface.h" />
+    <ClInclude Include="GameEngine\engine\VThread.h" />
+    <ClInclude Include="GameEngine\engine\VTimerSprite.h" />
+    <ClInclude Include="GameEngine\engine\VWaterSprite.h" />
+    <ClInclude Include="GameEngine\engine\VWebBrowserSprite.h" />
+    <ClInclude Include="GameEngine\sound\ISoundOut.h" />
+    <ClInclude Include="GameEngine\sound\soundDecoder\ISoundDecoder.h" />
+    <ClInclude Include="GameEngine\sound\soundDecoder\Mp3Decoder.h" />
+    <ClInclude Include="GameEngine\sound\soundDecoder\mp3\bit.h" />
+    <ClInclude Include="GameEngine\sound\soundDecoder\mp3\config.h" />
+    <ClInclude Include="GameEngine\sound\soundDecoder\mp3\D.dat.h" />
+    <ClInclude Include="GameEngine\sound\soundDecoder\mp3\decoder.h" />
+    <ClInclude Include="GameEngine\sound\soundDecoder\mp3\fixed.h" />
+    <ClInclude Include="GameEngine\sound\soundDecoder\mp3\frame.h" />
+    <ClInclude Include="GameEngine\sound\soundDecoder\mp3\global.h" />
+    <ClInclude Include="GameEngine\sound\soundDecoder\mp3\huffman.h" />
+    <ClInclude Include="GameEngine\sound\soundDecoder\mp3\imdct_s.dat.h" />
+    <ClInclude Include="GameEngine\sound\soundDecoder\mp3\layer12.h" />
+    <ClInclude Include="GameEngine\sound\soundDecoder\mp3\layer3.h" />
+    <ClInclude Include="GameEngine\sound\soundDecoder\mp3\mad.h" />
+    <ClInclude Include="GameEngine\sound\soundDecoder\mp3\qc_table.dat.h" />
+    <ClInclude Include="GameEngine\sound\soundDecoder\mp3\rq_table.dat.h" />
+    <ClInclude Include="GameEngine\sound\soundDecoder\mp3\sf_table.dat.h" />
+    <ClInclude Include="GameEngine\sound\soundDecoder\mp3\stream.h" />
+    <ClInclude Include="GameEngine\sound\soundDecoder\mp3\synth.h" />
+    <ClInclude Include="GameEngine\sound\soundDecoder\mp3\timer.h" />
+    <ClInclude Include="GameEngine\sound\soundDecoder\mp3\version.h" />
+    <ClInclude Include="GameEngine\sound\soundDecoder\OggDecoder.h" />
+    <ClInclude Include="GameEngine\sound\soundDecoder\ogg\backends.h" />
+    <ClInclude Include="GameEngine\sound\soundDecoder\ogg\bitrate.h" />
+    <ClInclude Include="GameEngine\sound\soundDecoder\ogg\codebook.h" />
+    <ClInclude Include="GameEngine\sound\soundDecoder\ogg\codec.h" />
+    <ClInclude Include="GameEngine\sound\soundDecoder\ogg\codec_internal.h" />
+    <ClInclude Include="GameEngine\sound\soundDecoder\ogg\envelope.h" />
+    <ClInclude Include="GameEngine\sound\soundDecoder\ogg\highlevel.h" />
+    <ClInclude Include="GameEngine\sound\soundDecoder\ogg\lookup.h" />
+    <ClInclude Include="GameEngine\sound\soundDecoder\ogg\lookup_data.h" />
+    <ClInclude Include="GameEngine\sound\soundDecoder\ogg\lpc.h" />
+    <ClInclude Include="GameEngine\sound\soundDecoder\ogg\lsp.h" />
+    <ClInclude Include="GameEngine\sound\soundDecoder\ogg\masking.h" />
+    <ClInclude Include="GameEngine\sound\soundDecoder\ogg\mdct.h" />
+    <ClInclude Include="GameEngine\sound\soundDecoder\ogg\misc.h" />
+    <ClInclude Include="GameEngine\sound\soundDecoder\ogg\ogg.h" />
+    <ClInclude Include="GameEngine\sound\soundDecoder\ogg\os.h" />
+    <ClInclude Include="GameEngine\sound\soundDecoder\ogg\os_types.h" />
+    <ClInclude Include="GameEngine\sound\soundDecoder\ogg\psy.h" />
+    <ClInclude Include="GameEngine\sound\soundDecoder\ogg\registry.h" />
+    <ClInclude Include="GameEngine\sound\soundDecoder\ogg\scales.h" />
+    <ClInclude Include="GameEngine\sound\soundDecoder\ogg\smallft.h" />
+    <ClInclude Include="GameEngine\sound\soundDecoder\ogg\vorbisfile.h" />
+    <ClInclude Include="GameEngine\sound\soundDecoder\ogg\window.h" />
+    <ClInclude Include="GameEngine\sound\soundDecoder\WavDecoder.h" />
+    <ClInclude Include="GameEngine\sound\SoundPlayer.h" />
+    <ClInclude Include="GameEngine\sound\wavDispose.h" />
+    <ClInclude Include="SpriteDraw.h" />
+    <ClInclude Include="import\importInclude\clipboradImport.h" />
+    <ClInclude Include="import\importInclude\EditImport.h" />
+    <ClInclude Include="import\importInclude\FileImport.h" />
+    <ClInclude Include="import\importInclude\hPixels32ImportBase.h" />
+    <ClInclude Include="import\importInclude\InAppPurchase.h" />
+    <ClInclude Include="import\importInclude\IUpdateListenerBase.h" />
+    <ClInclude Include="import\importInclude\mmTimer.h" />
+    <ClInclude Include="import\importInclude\SoundImport.h" />
+    <ClInclude Include="import\importInclude\soundOut.h" />
+    <ClInclude Include="import\importInclude\SysImport.h" />
+    <ClInclude Include="import\importInclude\ThreadImport.h" />
+    <ClInclude Include="import\importInclude\WebImport.h" />
+    <ClInclude Include="import\win32\DDrawImport.h" />
+    <ClInclude Include="import\win32\MIDIOut.h" />
+    <ClInclude Include="import\win32\soundEngine_dll\src\HSoundPlayer.h" />
+    <ClInclude Include="MainFrm.h" />
+    <ClInclude Include="OutputWnd.h" />
+    <ClInclude Include="PropertiesWnd.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="SceneEditor.h" />
+    <ClInclude Include="SceneEditorDoc.h" />
+    <ClInclude Include="SceneEditorView.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+    <ClInclude Include="ViewTree.h" />
+    <ClInclude Include="XTreeCtrl.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Classes\MyGame.cpp" />
+    <ClCompile Include="Classes\MyGameCreate.cpp" />
+    <ClCompile Include="SceneView.cpp" />
+    <ClCompile Include="SpriteView.cpp" />
+    <ClCompile Include="GameEngine\base\Base64.cpp" />
+    <ClCompile Include="GameEngine\base\CRC32.CPP" />
+    <ClCompile Include="GameEngine\base\DownLoader.cpp" />
+    <ClCompile Include="GameEngine\base\GamePackFile.cpp" />
+    <ClCompile Include="GameEngine\base\hStream.cpp" />
+    <ClCompile Include="GameEngine\base\IniFile.cpp" />
+    <ClCompile Include="GameEngine\base\md5.c" />
+    <ClCompile Include="GameEngine\base\MyCrypt.cpp" />
+    <ClCompile Include="GameEngine\base\MyDes.cpp" />
+    <ClCompile Include="GameEngine\base\MyMD5Import.cpp" />
+    <ClCompile Include="GameEngine\base\Rand.cpp" />
+    <ClCompile Include="GameEngine\base\Rect.cpp" />
+    <ClCompile Include="GameEngine\base\SysImportType.cpp" />
+    <ClCompile Include="GameEngine\base\UndoRedo.cpp" />
+    <ClCompile Include="GameEngine\base\Xml.cpp" />
+    <ClCompile Include="GameEngine\draw2d\hBlend.cpp" />
+    <ClCompile Include="GameEngine\draw2d\hColor32.cpp" />
+    <ClCompile Include="GameEngine\draw2d\hColorConvert.cpp" />
+    <ClCompile Include="GameEngine\draw2d\hDraw.cpp" />
+    <ClCompile Include="GameEngine\draw2d\hFilter.cpp" />
+    <ClCompile Include="GameEngine\draw2d\hPixels32.cpp" />
+    <ClCompile Include="GameEngine\draw2d\hPixels32Import.cpp" />
+    <ClCompile Include="GameEngine\draw2d\hRotary.cpp" />
+    <ClCompile Include="GameEngine\draw2d\hZoom.cpp" />
+    <ClCompile Include="GameEngine\draw2d\imageFile\hBmpFile.cpp" />
+    <ClCompile Include="GameEngine\draw2d\imageFile\hFh8File.cpp" />
+    <ClCompile Include="GameEngine\draw2d\imageFile\hFhFile.cpp" />
+    <ClCompile Include="GameEngine\draw2d\imageFile\hImgFile.cpp" />
+    <ClCompile Include="GameEngine\draw2d\imageFile\hJpegFile.cpp" />
+    <ClCompile Include="GameEngine\draw2d\imageFile\hPngFile.cpp" />
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jaricom.c" />
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jcapimin.c" />
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jcapistd.c" />
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jcarith.c" />
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jccoefct.c" />
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jccolor.c" />
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jcdctmgr.c" />
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jchuff.c" />
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jcinit.c" />
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jcmainct.c" />
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jcmarker.c" />
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jcmaster.c" />
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jcomapi.c" />
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jcparam.c" />
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jcprepct.c" />
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jcsample.c" />
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jctrans.c" />
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jdapimin.c" />
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jdapistd.c" />
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jdarith.c" />
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jdatadst.c" />
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jdatasrc.c" />
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jdcoefct.c" />
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jdcolor.c" />
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jddctmgr.c" />
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jdhuff.c" />
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jdinput.c" />
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jdmainct.c" />
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jdmarker.c" />
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jdmaster.c" />
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jdmerge.c" />
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jdpostct.c" />
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jdsample.c" />
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jdtrans.c" />
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jerror.c" />
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jfdctflt.c" />
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jfdctfst.c" />
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jfdctint.c" />
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jidctflt.c" />
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jidctfst.c" />
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jidctint.c" />
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jmemmgr.c" />
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jmemnobs.c" />
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jquant1.c" />
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jquant2.c" />
+    <ClCompile Include="GameEngine\draw2d\imageFile\jpeg\jutils.c" />
+    <ClCompile Include="GameEngine\draw2d\imageFile\png\png.c" />
+    <ClCompile Include="GameEngine\draw2d\imageFile\png\pngerror.c" />
+    <ClCompile Include="GameEngine\draw2d\imageFile\png\pngget.c" />
+    <ClCompile Include="GameEngine\draw2d\imageFile\png\pngmem.c" />
+    <ClCompile Include="GameEngine\draw2d\imageFile\png\pngpread.c" />
+    <ClCompile Include="GameEngine\draw2d\imageFile\png\pngread.c" />
+    <ClCompile Include="GameEngine\draw2d\imageFile\png\pngrio.c" />
+    <ClCompile Include="GameEngine\draw2d\imageFile\png\pngrtran.c" />
+    <ClCompile Include="GameEngine\draw2d\imageFile\png\pngrutil.c" />
+    <ClCompile Include="GameEngine\draw2d\imageFile\png\pngset.c" />
+    <ClCompile Include="GameEngine\draw2d\imageFile\png\pngtrans.c" />
+    <ClCompile Include="GameEngine\draw2d\imageFile\png\pngwio.c" />
+    <ClCompile Include="GameEngine\draw2d\imageFile\png\pngwrite.c" />
+    <ClCompile Include="GameEngine\draw2d\imageFile\png\pngwtran.c" />
+    <ClCompile Include="GameEngine\draw2d\imageFile\png\pngwutil.c" />
+    <ClCompile Include="GameEngine\draw2d\imageFile\zlib\adler32.c" />
+    <ClCompile Include="GameEngine\draw2d\imageFile\zlib\compress.c" />
+    <ClCompile Include="GameEngine\draw2d\imageFile\zlib\crc32z.c" />
+    <ClCompile Include="GameEngine\draw2d\imageFile\zlib\deflate.c" />
+    <ClCompile Include="GameEngine\draw2d\imageFile\zlib\infback.c" />
+    <ClCompile Include="GameEngine\draw2d\imageFile\zlib\inffast.c" />
+    <ClCompile Include="GameEngine\draw2d\imageFile\zlib\inflate.c" />
+    <ClCompile Include="GameEngine\draw2d\imageFile\zlib\inftrees.c" />
+    <ClCompile Include="GameEngine\draw2d\imageFile\zlib\trees.c" />
+    <ClCompile Include="GameEngine\draw2d\imageFile\zlib\uncompr.c" />
+    <ClCompile Include="GameEngine\draw2d\imageFile\zlib\zutil.c" />
+    <ClCompile Include="GameEngine\engine\GameRes.cpp" />
+    <ClCompile Include="GameEngine\engine\SpritePosCfg.cpp" />
+    <ClCompile Include="GameEngine\engine\VAction.cpp" />
+    <ClCompile Include="GameEngine\engine\VBitmapBaseSprite.cpp" />
+    <ClCompile Include="GameEngine\engine\VBitmapReflectionSprite.cpp" />
+    <ClCompile Include="GameEngine\engine\VBitmapSprite.cpp" />
+    <ClCompile Include="GameEngine\engine\VBmpButtonSprite.cpp" />
+    <ClCompile Include="GameEngine\engine\VBmpNumberSprite.cpp" />
+    <ClCompile Include="GameEngine\engine\VButtonSprite.cpp" />
+    <ClCompile Include="GameEngine\engine\VCanvas.cpp" />
+    <ClCompile Include="GameEngine\engine\VCharCanvas.cpp" />
+    <ClCompile Include="GameEngine\engine\VClipborad.cpp" />
+    <ClCompile Include="GameEngine\engine\VColorSprite.cpp" />
+    <ClCompile Include="GameEngine\engine\VCom.cpp" />
+    <ClCompile Include="GameEngine\engine\VCountDownSprite.cpp" />
+    <ClCompile Include="GameEngine\engine\VDateTimeLabel.cpp" />
+    <ClCompile Include="GameEngine\engine\VDispatcher.cpp" />
+    <ClCompile Include="GameEngine\engine\VDragPageGridView.cpp" />
+    <ClCompile Include="GameEngine\engine\VDrawPipe.cpp" />
+    <ClCompile Include="GameEngine\engine\VEditSprite.cpp" />
+    <ClCompile Include="GameEngine\engine\VFont.cpp" />
+    <ClCompile Include="GameEngine\engine\VGame.cpp" />
+    <ClCompile Include="GameEngine\engine\VGameCtrl.cpp" />
+    <ClCompile Include="GameEngine\engine\VGrid9BitmapSprite.cpp" />
+    <ClCompile Include="GameEngine\engine\VLabelSprite.cpp" />
+    <ClCompile Include="GameEngine\engine\VLightBitmapSprite.cpp" />
+    <ClCompile Include="GameEngine\engine\VLightFlashEffect.cpp" />
+    <ClCompile Include="GameEngine\engine\VMemoSprite.cpp" />
+    <ClCompile Include="GameEngine\engine\VMemoTextDragDrop.cpp" />
+    <ClCompile Include="GameEngine\engine\VMotiveFrame.cpp" />
+    <ClCompile Include="GameEngine\engine\VMoveBitmapSprite.cpp" />
+    <ClCompile Include="GameEngine\engine\VNet.cpp" />
+    <ClCompile Include="GameEngine\engine\VNetTCPLink.cpp" />
+    <ClCompile Include="GameEngine\engine\VPageView.cpp" />
+    <ClCompile Include="GameEngine\engine\VParticle.cpp" />
+    <ClCompile Include="GameEngine\engine\VPopSprite.cpp" />
+    <ClCompile Include="GameEngine\engine\VProgressSprite.cpp" />
+    <ClCompile Include="GameEngine\engine\VRadioButtonSprite.cpp" />
+    <ClCompile Include="GameEngine\engine\VRectLightFlashEffectSprite.cpp" />
+    <ClCompile Include="GameEngine\engine\VScene.cpp" />
+    <ClCompile Include="GameEngine\engine\VScreenScale.cpp" />
+    <ClCompile Include="GameEngine\engine\VScrollBarSprite.cpp" />
+    <ClCompile Include="GameEngine\engine\VSound.cpp" />
+    <ClCompile Include="GameEngine\engine\VSprite.cpp" />
+    <ClCompile Include="GameEngine\engine\VSpriteEngine.cpp" />
+    <ClCompile Include="GameEngine\engine\VSurface.cpp" />
+    <ClCompile Include="GameEngine\engine\VThread.cpp" />
+    <ClCompile Include="GameEngine\engine\VTimerSprite.cpp" />
+    <ClCompile Include="GameEngine\engine\VWaterSprite.cpp" />
+    <ClCompile Include="GameEngine\engine\VWebBrowserSprite.cpp" />
+    <ClCompile Include="GameEngine\sound\soundDecoder\Mp3Decoder.cpp" />
+    <ClCompile Include="GameEngine\sound\soundDecoder\mp3\bit.c" />
+    <ClCompile Include="GameEngine\sound\soundDecoder\mp3\decoder.c" />
+    <ClCompile Include="GameEngine\sound\soundDecoder\mp3\fixed.c" />
+    <ClCompile Include="GameEngine\sound\soundDecoder\mp3\frame.c" />
+    <ClCompile Include="GameEngine\sound\soundDecoder\mp3\huffman.c" />
+    <ClCompile Include="GameEngine\sound\soundDecoder\mp3\layer12.c" />
+    <ClCompile Include="GameEngine\sound\soundDecoder\mp3\layer3.c" />
+    <ClCompile Include="GameEngine\sound\soundDecoder\mp3\stream.c" />
+    <ClCompile Include="GameEngine\sound\soundDecoder\mp3\synth.c" />
+    <ClCompile Include="GameEngine\sound\soundDecoder\mp3\timer.c" />
+    <ClCompile Include="GameEngine\sound\soundDecoder\mp3\version.c" />
+    <ClCompile Include="GameEngine\sound\soundDecoder\OggDecoder.cpp" />
+    <ClCompile Include="GameEngine\sound\soundDecoder\ogg\analysis.c" />
+    <ClCompile Include="GameEngine\sound\soundDecoder\ogg\bitrate.c" />
+    <ClCompile Include="GameEngine\sound\soundDecoder\ogg\bitwise.c" />
+    <ClCompile Include="GameEngine\sound\soundDecoder\ogg\block.c" />
+    <ClCompile Include="GameEngine\sound\soundDecoder\ogg\codebook.c" />
+    <ClCompile Include="GameEngine\sound\soundDecoder\ogg\envelope.c" />
+    <ClCompile Include="GameEngine\sound\soundDecoder\ogg\floor0.c" />
+    <ClCompile Include="GameEngine\sound\soundDecoder\ogg\floor1.c" />
+    <ClCompile Include="GameEngine\sound\soundDecoder\ogg\framing.c" />
+    <ClCompile Include="GameEngine\sound\soundDecoder\ogg\info.c" />
+    <ClCompile Include="GameEngine\sound\soundDecoder\ogg\lookup.c" />
+    <ClCompile Include="GameEngine\sound\soundDecoder\ogg\lpc.c" />
+    <ClCompile Include="GameEngine\sound\soundDecoder\ogg\lsp.c" />
+    <ClCompile Include="GameEngine\sound\soundDecoder\ogg\mapping0.c" />
+    <ClCompile Include="GameEngine\sound\soundDecoder\ogg\mdct.c" />
+    <ClCompile Include="GameEngine\sound\soundDecoder\ogg\psy.c" />
+    <ClCompile Include="GameEngine\sound\soundDecoder\ogg\registry.c" />
+    <ClCompile Include="GameEngine\sound\soundDecoder\ogg\res0.c" />
+    <ClCompile Include="GameEngine\sound\soundDecoder\ogg\sharedbook.c" />
+    <ClCompile Include="GameEngine\sound\soundDecoder\ogg\smallft.c" />
+    <ClCompile Include="GameEngine\sound\soundDecoder\ogg\synthesis.c" />
+    <ClCompile Include="GameEngine\sound\soundDecoder\ogg\vorbisfile.c" />
+    <ClCompile Include="GameEngine\sound\soundDecoder\ogg\window.c" />
+    <ClCompile Include="GameEngine\sound\soundDecoder\WavDecoder.cpp" />
+    <ClCompile Include="GameEngine\sound\SoundPlayer.cpp" />
+    <ClCompile Include="GameEngine\sound\wavDispose.cpp" />
+    <ClCompile Include="SpriteDraw.cpp" />
+    <ClCompile Include="import\importInclude\FileImport.cpp" />
+    <ClCompile Include="import\importInclude\IUpdateListenerBase.cpp" />
+    <ClCompile Include="import\win32\clipboradImport.cpp" />
+    <ClCompile Include="import\win32\DDrawImport.cpp" />
+    <ClCompile Include="import\win32\hPixels32ImportBase.cpp" />
+    <ClCompile Include="import\win32\InAppPurchase.cpp" />
+    <ClCompile Include="import\win32\MIDIOut.cpp" />
+    <ClCompile Include="import\win32\mmTimer.cpp" />
+    <ClCompile Include="import\win32\soundEngine_dll\src\HSoundPlayer.cpp" />
+    <ClCompile Include="import\win32\SoundImport.cpp" />
+    <ClCompile Include="import\win32\soundOut.cpp" />
+    <ClCompile Include="import\win32\SysImport.cpp" />
+    <ClCompile Include="import\win32\ThreadImport.cpp" />
+    <ClCompile Include="import\win32\WebImport.cpp" />
+    <ClCompile Include="MainFrm.cpp" />
+    <ClCompile Include="OutputWnd.cpp" />
+    <ClCompile Include="PropertiesWnd.cpp" />
+    <ClCompile Include="SceneEditor.cpp" />
+    <ClCompile Include="SceneEditorDoc.cpp" />
+    <ClCompile Include="SceneEditorView.cpp" />
+    <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="ViewTree.cpp" />
+    <ClCompile Include="XTreeCtrl.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="SceneEditor.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties RESOURCE_FILE="SceneEditor.rc" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

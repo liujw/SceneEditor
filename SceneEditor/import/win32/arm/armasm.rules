@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VisualStudioToolFile
+	Name="Arm ASM"
+	Version="8.00"
+	>
+	<Rules>
+		<CustomBuildRule
+			Name="Arm asm"
+			DisplayName="Arm asm"
+			CommandLine="armasm -o &quot;$(IntDir)\$(InputName).obj&quot; [$Inputs] "
+			Outputs="&quot;$(IntDir)\$(InputName).obj&quot;"
+			FileExtensions="*.asm"
+			ExecutionDescription="Arm asm 编译..."
+			>
+			<Properties>
+			</Properties>
+		</CustomBuildRule>
+	</Rules>
+</VisualStudioToolFile>

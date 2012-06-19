@@ -187,11 +187,6 @@ MyGame::MyGame(INetIOFactory* netIOFactory):VGame(netIOFactory),m_pBack(NULL){
 	
 }
 
-void MyGame::playXX(){
-	//m_sound.playLoopCount("sound/H_HJDClick.wav",1);
-	//m_sound.playLoopCount("sound/H_HJD.mp3",1);  
-	//m_sound.play("sound/hai.ogg");  	
-}
 
 void MyGame::downLoader_finish(IDownLoader* downLoader){
 	long fileSize=downLoader->getDownLoadedDataSize();
@@ -205,7 +200,6 @@ class TMyClickEventListener:public IEventListener{
 	virtual void event(void* sender,void* callBackData,void* pdata,long data0,long data1,bool& isContinueListen){
 		MyGame* game=(MyGame*)callBackData;
 		((VSprite*)sender)->kill();
-		game->playXX();
 	}
 
 };

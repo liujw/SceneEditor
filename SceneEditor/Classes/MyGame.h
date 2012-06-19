@@ -31,7 +31,7 @@ public:
 	explicit MyGame(INetIOFactory* netIOFactory);
 	void addBtn();
 	void addLable(long fontSizei);
-	void playXX();
+
 	virtual void downLoader_finish(IDownLoader* downLoader);
 public:
 	virtual void update(double stepTime_s,bool isScreenSizeChanged,long newWidth,long newHeight);

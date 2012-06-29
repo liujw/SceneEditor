@@ -6,17 +6,23 @@
 #include "MainFrm.h"
 #include "SceneEditor.h"
 
+#include "SpriteTree.h"
+
 #ifdef _DEBUG
 #undef THIS_FILE
 static char THIS_FILE[]=__FILE__;
 #define new DEBUG_NEW
 #endif
+	
+const char* szAlignX[] = {"none","Left","Center","Right"};
+const char* szAlignY[] = {"none","Top","Center","Bottom"};
 
 /////////////////////////////////////////////////////////////////////////////
 // CResourceViewBar
 
 CPropertiesWnd::CPropertiesWnd()
 {
+	m_pTreeNode = NULL;
 }
 
 CPropertiesWnd::~CPropertiesWnd()
@@ -36,6 +42,7 @@ BEGIN_MESSAGE_MAP(CPropertiesWnd, CDockablePane)
 	ON_UPDATE_COMMAND_UI(ID_PROPERTIES2, OnUpdateProperties2)
 	ON_WM_SETFOCUS()
 	ON_WM_SETTINGCHANGE()
+	ON_REGISTERED_MESSAGE(AFX_WM_PROPERTY_CHANGED, OnPropertyChanged)
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
@@ -48,15 +55,12 @@ void CPropertiesWnd::AdjustLayout()
 		return;
 	}
 
-	CRect rectClient,rectCombo;
+	CRect rectClient;
 	GetClientRect(rectClient);
 
-	m_wndObjectCombo.GetWindowRect(&rectCombo);
-
-	int cyCmb = rectCombo.Size().cy;
+	int cyCmb = 0;
 	int cyTlb = m_wndToolBar.CalcFixedLayout(FALSE, TRUE).cy;
 
-	m_wndObjectCombo.SetWindowPos(NULL, rectClient.left, rectClient.top, rectClient.Width(), 200, SWP_NOACTIVATE | SWP_NOZORDER);
 	m_wndToolBar.SetWindowPos(NULL, rectClient.left, rectClient.top + cyCmb, rectClient.Width(), cyTlb, SWP_NOACTIVATE | SWP_NOZORDER);
 	m_wndPropList.SetWindowPos(NULL, rectClient.left, rectClient.top + cyCmb + cyTlb, rectClient.Width(), rectClient.Height() -(cyCmb+cyTlb), SWP_NOACTIVATE | SWP_NOZORDER);
 }
@@ -72,17 +76,7 @@ int CPropertiesWnd::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	// 创建组合:
 	const DWORD dwViewStyle = WS_CHILD | WS_VISIBLE | CBS_DROPDOWNLIST | WS_BORDER | CBS_SORT | WS_CLIPSIBLINGS | WS_CLIPCHILDREN;
 
-	if (!m_wndObjectCombo.Create(dwViewStyle, rectDummy, this, 1))
-	{
-		TRACE0("未能创建属性组合 \n");
-		return -1;      // 未能创建
-	}
-
-	m_wndObjectCombo.AddString(_T("应用程序"));
-	m_wndObjectCombo.AddString(_T("属性窗口"));
-	m_wndObjectCombo.SetCurSel(0);
-
-	if (!m_wndPropList.Create(WS_VISIBLE | WS_CHILD, rectDummy, this, 2))
+	if (!m_wndPropList.Create(WS_VISIBLE | WS_CHILD, rectDummy, this, 1))
 	{
 		TRACE0("未能创建属性网格\n");
 		return -1;      // 未能创建
@@ -160,78 +154,75 @@ void CPropertiesWnd::InitPropList()
 	m_wndPropList.SetVSDotNetLook();
 	m_wndPropList.MarkModifiedProperties();
 
-	CMFCPropertyGridProperty* pGroup1 = new CMFCPropertyGridProperty(_T("外观"));
+	CMFCPropertyGridProperty* pSurface = new CMFCPropertyGridProperty(_T("Surface"));
+	
+	m_pSurfaceName = new CMFCPropertyGridProperty(_T("SurfaceName"), (_variant_t)"", _T("Surface Name"));
+	pSurface->AddSubItem(m_pSurfaceName);
+	registerSettor("SurfaceName",SetSurfaceName);
 
-	pGroup1->AddSubItem(new CMFCPropertyGridProperty(_T("三维外观"), (_variant_t) false, _T("指定窗口的字体不使用粗体，并且控件将使用三维边框")));
+	static const TCHAR szPngFilter[] = _T("图像文件(*.png)|*.png|所有文件(*.*)|*.*||");
+	m_pFileName = new CMFCPropertyGridFileProperty(_T("FileName"), TRUE, _T(""), _T("ico"), 0, szPngFilter, _T("surface图像文件"));
+	pSurface->AddSubItem(m_pFileName);
+	registerSettor("FileName",SetFileName);	
 
-	CMFCPropertyGridProperty* pProp = new CMFCPropertyGridProperty(_T("边框"), _T("对话框外框"), _T("其中之一:“无”、“细”、“可调整大小”或“对话框外框”"));
-	pProp->AddOption(_T("无"));
-	pProp->AddOption(_T("细"));
-	pProp->AddOption(_T("可调整大小"));
-	pProp->AddOption(_T("对话框外框"));
-	pProp->AllowEdit(FALSE);
+	m_pPosName = new CMFCPropertyGridProperty(_T("PosName"), (_variant_t)"", _T("坐标名字"));
+	pSurface->AddSubItem(m_pPosName);
+	registerSettor("PosName",SetPosName);	
+	m_wndPropList.AddProperty(pSurface);
 
-	pGroup1->AddSubItem(pProp);
-	pGroup1->AddSubItem(new CMFCPropertyGridProperty(_T("标题"), (_variant_t) _T("关于"), _T("指定窗口标题栏中显示的文本")));
+	CMFCPropertyGridProperty* pSize = new CMFCPropertyGridProperty(_T("Position"), 0, FALSE);
 
-	m_wndPropList.AddProperty(pGroup1);
+	m_pLeft = new CMFCPropertyGridProperty(_T("Left"), (_variant_t) 0l, _T("精灵的Left值"));
+	pSize->AddSubItem(m_pLeft);
+	registerSettor("Left",SetLeft);
 
-	CMFCPropertyGridProperty* pSize = new CMFCPropertyGridProperty(_T("窗口大小"), 0, TRUE);
+	m_pTop = new CMFCPropertyGridProperty( _T("Top"), (_variant_t) 0l, _T("精灵的Top值"));
+	pSize->AddSubItem(m_pTop);
+	registerSettor("Top",SetTop);
 
-	pProp = new CMFCPropertyGridProperty(_T("高度"), (_variant_t) 250l, _T("指定窗口的高度"));
-	pProp->EnableSpinControl(TRUE, 50, 300);
-	pSize->AddSubItem(pProp);
+	m_pWidth = new CMFCPropertyGridProperty(_T("Width"), (_variant_t) 0l, _T("精灵的高度"));
+	pSize->AddSubItem(m_pWidth);
+	registerSettor("Width",SetWidth);
 
-	pProp = new CMFCPropertyGridProperty( _T("宽度"), (_variant_t) 150l, _T("指定窗口的宽度"));
-	pProp->EnableSpinControl(TRUE, 50, 200);
-	pSize->AddSubItem(pProp);
+	m_pHeight = new CMFCPropertyGridProperty( _T("Height"), (_variant_t) 0l, _T("精灵的宽度"));
+	pSize->AddSubItem(m_pHeight);
+	registerSettor("Height",SetHeight);
 
+	pSize->Expand(TRUE);
 	m_wndPropList.AddProperty(pSize);
 
-	CMFCPropertyGridProperty* pGroup2 = new CMFCPropertyGridProperty(_T("字体"));
+	//test add
+	CMFCPropertyGridProperty* pAlign = new CMFCPropertyGridProperty(_T("Align"), 0, FALSE);
 
-	LOGFONT lf;
-	CFont* font = CFont::FromHandle((HFONT) GetStockObject(DEFAULT_GUI_FONT));
-	font->GetLogFont(&lf);
+	m_pAlignX = new CMFCPropertyGridProperty(_T("AlignX"),_T(""),_T("X方向上对齐方式"));
+	for(long i = 1; i<4;i++)
+	{
+		m_pAlignX->AddOption(szAlignX[i]);
+	}
+	m_pAlignX->AllowEdit(FALSE);
+	pAlign->AddSubItem(m_pAlignX);
+	registerSettor("AlignX",SetAlignX);
 
-	lstrcpy(lf.lfFaceName, _T("宋体, Arial"));
+	m_pAlignY = new CMFCPropertyGridProperty(_T("AlignY"),_T(""),_T("Y方向上对齐方式"));
+	for(long i = 1; i<4;i++)
+	{
+		m_pAlignY->AddOption(szAlignY[i]);
+	}
+	m_pAlignY->AllowEdit(FALSE);
+	pAlign->AddSubItem(m_pAlignY);
+	registerSettor("AlignY",SetAlignY);
 
-	pGroup2->AddSubItem(new CMFCPropertyGridFontProperty(_T("字体"), lf, CF_EFFECTS | CF_SCREENFONTS, _T("指定窗口的默认字体")));
-	pGroup2->AddSubItem(new CMFCPropertyGridProperty(_T("使用系统字体"), (_variant_t) true, _T("指定窗口使用“MS Shell Dlg”字体")));
+	pAlign->Expand(TRUE);
+	m_wndPropList.AddProperty(pAlign);
 
-	m_wndPropList.AddProperty(pGroup2);
+	CMFCPropertyGridProperty* pLevel = new CMFCPropertyGridProperty(_T("Level"), 0, FALSE);
 
-	CMFCPropertyGridProperty* pGroup3 = new CMFCPropertyGridProperty(_T("杂项"));
-	pProp = new CMFCPropertyGridProperty(_T("(名称)"), _T("应用程序"));
-	pProp->Enable(FALSE);
-	pGroup3->AddSubItem(pProp);
+	m_pLevel = new CMFCPropertyGridProperty( _T("Z"), (_variant_t) 0l, _T("精灵的层次"));
+	pLevel->AddSubItem(m_pLevel);
+	registerSettor("Z",SetZ);
+	pLevel->Expand(TRUE);
 
-	CMFCPropertyGridColorProperty* pColorProp = new CMFCPropertyGridColorProperty(_T("窗口颜色"), RGB(210, 192, 254), NULL, _T("指定默认的窗口颜色"));
-	pColorProp->EnableOtherButton(_T("其他..."));
-	pColorProp->EnableAutomaticButton(_T("默认"), ::GetSysColor(COLOR_3DFACE));
-	pGroup3->AddSubItem(pColorProp);
-
-	static const TCHAR szFilter[] = _T("图标文件(*.ico)|*.ico|所有文件(*.*)|*.*||");
-	pGroup3->AddSubItem(new CMFCPropertyGridFileProperty(_T("图标"), TRUE, _T(""), _T("ico"), 0, szFilter, _T("指定窗口图标")));
-
-	pGroup3->AddSubItem(new CMFCPropertyGridFileProperty(_T("文件夹"), _T("c:\\")));
-
-	m_wndPropList.AddProperty(pGroup3);
-
-	CMFCPropertyGridProperty* pGroup4 = new CMFCPropertyGridProperty(_T("层次结构"));
-
-	CMFCPropertyGridProperty* pGroup41 = new CMFCPropertyGridProperty(_T("第一个子级"));
-	pGroup4->AddSubItem(pGroup41);
-
-	CMFCPropertyGridProperty* pGroup411 = new CMFCPropertyGridProperty(_T("第二个子级"));
-	pGroup41->AddSubItem(pGroup411);
-
-	pGroup411->AddSubItem(new CMFCPropertyGridProperty(_T("项 1"), (_variant_t) _T("值 1"), _T("此为说明")));
-	pGroup411->AddSubItem(new CMFCPropertyGridProperty(_T("项 2"), (_variant_t) _T("值 2"), _T("此为说明")));
-	pGroup411->AddSubItem(new CMFCPropertyGridProperty(_T("项 3"), (_variant_t) _T("值 3"), _T("此为说明")));
-
-	pGroup4->Expand(FALSE);
-	m_wndPropList.AddProperty(pGroup4);
+	m_wndPropList.AddProperty(pLevel);
 }
 
 void CPropertiesWnd::OnSetFocus(CWnd* pOldWnd)
@@ -265,5 +256,188 @@ void CPropertiesWnd::SetPropListFont()
 	m_fntPropList.CreateFontIndirect(&lf);
 
 	m_wndPropList.SetFont(&m_fntPropList);
-	m_wndObjectCombo.SetFont(&m_fntPropList);
 }
+
+void CPropertiesWnd::SetSpriteValue(TSpriteTree* pTreeNode)
+{
+	m_pTreeNode = pTreeNode;
+
+	m_pSurfaceName->SetValue((_variant_t)(pTreeNode->getName().c_str()));
+	m_pFileName->SetValue((_variant_t)(pTreeNode->getPath().c_str()));
+	m_pLeft->SetValue((_variant_t)(pTreeNode->getLeft()));
+	m_pTop->SetValue((_variant_t)(pTreeNode->getTop()));
+
+	VSprite* pSprite = pTreeNode->getSprite();
+	long nWidth = pTreeNode->getWidth();
+	if(nWidth == 0)
+		nWidth = pSprite->getWidth();
+
+	m_pWidth->SetValue((_variant_t)nWidth);
+
+	long nHeight = pTreeNode->getHeight();
+	if(nHeight == 0)
+		nHeight = pSprite->getHeight();
+	m_pHeight->SetValue((_variant_t)nHeight);	
+
+	m_pAlignX->SetValue((_variant_t)(szAlignX[long(pTreeNode->getAlignX()+1)]));
+	m_pAlignY->SetValue((_variant_t)(szAlignY[long(pTreeNode->getAlignY()+1)]));
+
+	m_pLevel->SetValue((_variant_t)(pTreeNode->getZ()));
+
+	m_pPosName->SetValue((_variant_t)(pTreeNode->getPosName().c_str()));
+}
+
+void CPropertiesWnd::ResetSpritePos()
+{
+	if(m_pTreeNode)
+	{
+		m_pLeft->SetValue((_variant_t)(m_pTreeNode->getLeft()));
+		m_pTop->SetValue((_variant_t)(m_pTreeNode->getTop()));
+	}
+}
+
+LRESULT CPropertiesWnd::OnPropertyChanged (WPARAM,LPARAM lParam)
+{
+	if(m_pTreeNode == NULL)
+		return 0;
+
+	CMFCPropertyGridProperty* pProp = (CMFCPropertyGridProperty*) lParam;
+
+    COleVariant vPropValue=pProp->GetValue();
+	vPropValue.ChangeType(VT_BSTR);
+	CString strValue = CString(vPropValue.bstrVal);
+
+	vPropValue=pProp->GetOriginalValue();
+	vPropValue.ChangeType(VT_BSTR);
+	CString strOldValue = CString(vPropValue.bstrVal);
+
+	CString strKey = pProp->GetName();
+
+	funSpriteSet pSpriteSettor = m_spriteSetMap[strKey.GetBuffer()];
+	if(pSpriteSettor)
+	{
+		if((*pSpriteSettor)(strOldValue.GetBuffer(),strValue.GetBuffer(),m_pTreeNode))
+		{
+			m_pMainFrm = (CMainFrame *)theApp.m_pMainWnd;
+			m_pMainFrm->UpdateSceneView();
+			ResetSpritePos();
+		}
+	}
+
+	return 0;
+}
+
+ BOOL CPropertiesWnd::SetSurfaceName(String strOldValue,String strValue,TSpriteTree* pTreeNode)
+ {
+	 //暂步支持
+	 return FALSE;
+ }
+ BOOL CPropertiesWnd::SetFileName(String strOldValue,String strValue,TSpriteTree* pTreeNode)
+ {
+	 if(pTreeNode)
+	 {
+		 //pTreeNode->setPath(strValue);
+
+		 return TRUE;
+	 }
+
+	 return FALSE;
+ }
+ BOOL CPropertiesWnd::SetPosName(String strOldValue,String strValue,TSpriteTree* pTreeNode)
+ {
+	 if(pTreeNode)
+	 {
+		 pTreeNode->setPosName(strValue);
+
+		 return TRUE;
+	 }
+
+	 return FALSE;
+ }
+ BOOL CPropertiesWnd::SetLeft(String strOldValue,String strValue,TSpriteTree* pTreeNode)
+ {
+	 if(pTreeNode)
+	 {
+		 long nLeft = strToInt(strValue);
+		 pTreeNode->setSpriteLeft(nLeft);
+
+		 return TRUE;
+	 }
+	 return FALSE;
+ }
+ BOOL CPropertiesWnd::SetTop(String strOldValue,String strValue,TSpriteTree* pTreeNode)
+ {
+	 if(pTreeNode)
+	 {
+		 long nTop = strToInt(strValue);
+		 pTreeNode->setSpriteTop(nTop);
+
+		 return TRUE;
+	 }
+	 return FALSE;
+ }
+ BOOL CPropertiesWnd::SetWidth(String strOldValue,String strValue,TSpriteTree* pTreeNode)
+ {
+	 /*if(pTreeNode && pSprite)
+	 {
+		 long nWidth = strToInt(strValue);
+		 pTreeNode->setWidth(nWidth);
+
+		 return TRUE;
+	 }*/
+	 return FALSE;
+ }
+ BOOL CPropertiesWnd::SetHeight(String strOldValue,String strValue,TSpriteTree* pTreeNode)
+ {
+	 /*if(pTreeNode && pSprite)
+	 {
+		 long nHeight = strToInt(strValue);
+		 pTreeNode->setHeight(nHeight);
+
+		 return TRUE;
+	 }*/
+	 return FALSE;
+ }
+ long getAlign(const char* pAlign[],const char* value)
+ {
+	long align = -1;
+	for(long i= 0 ;i < 4;i++)
+	{
+		 if(strcmp(pAlign[i], value) == 0)
+		 {
+			align = i-1;
+			break;
+		 }
+	 }
+	return align;
+ }
+  BOOL CPropertiesWnd::SetAlignX(String strOldValue,String strValue,TSpriteTree* pTreeNode)
+ {
+	 if(strValue == strOldValue)
+		 return FALSE;
+
+	 long align = getAlign(szAlignX, strValue.c_str());
+	 pTreeNode->setSpriteAlignX(align);
+	 
+	 return TRUE;
+ }
+
+ BOOL CPropertiesWnd::SetAlignY(String strOldValue,String strValue,TSpriteTree* pTreeNode)
+ {
+	 if(strValue == strOldValue)
+		 return FALSE;
+
+	 long align = getAlign(szAlignY, strValue.c_str());
+	 pTreeNode->setSpriteAlignY(align);
+	 
+	 return TRUE;
+ }
+
+ BOOL CPropertiesWnd::SetZ(String strOldValue,String strValue,TSpriteTree* pTreeNode)
+ {
+	 if (pTreeNode)
+	 {
+		 pTreeNode->setSpriteZ(strToInt(strValue));
+	 }
+	 return TRUE;
+ }

@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="gb2312"?>
+<game >
+<surfacelist >
+<surface surfacename="BackGround" type="VBitmapSprite" posname="m_pBack" filename="../pic/cjzy_bg@h.png" />
+<surface surfacename="Humen" type="VBitmapSprite" parentname="BackGround" posname="m_pHumen" top="10" left="10" filename="../pic/js_dizhu1@h.png" />
+<surface surfacename="StartButton" type="VButtonSprite" parentname="BackGround" posname="m_pStartButton" rows="6" top="200" left="700" filename="../pic/cjzyanniu_ksyx(6)@h.png" />
+<surface surfacename="QiJuButton" type="VButtonSprite" parentname="StartButton" posname="m_pQiJuButton" rows="4" top="21" left="78" alignX="1" alignY="1" filename="../pic/cj_dzjlan@h.png" />
+<surface surfacename="ScenEditor" type="VMemoSprite" parentname="StartButton" posname="m_pScenEditor" width="200" height="15" top="-2" left="78" z="1000" />
+</surfacelist>
+</game>

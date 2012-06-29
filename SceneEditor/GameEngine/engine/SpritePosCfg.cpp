@@ -31,6 +31,9 @@ void SpritePosCfg::readSpritePos(const CsXmlValues& values)
     static const String csCenter	("center");
     static const String csWidth		("width");
     static const String csHeight	("height");
+	//test add
+	static const String csZ         ("z");
+	static const String csAlign     ("align");
     
     const String* strSpriteName=getMapPValue(values,csName);
     assert((strSpriteName!=0)&&(!strSpriteName->empty()));
@@ -83,6 +86,24 @@ void SpritePosCfg::readSpritePos(const CsXmlValues& values)
         atof(*strHeight, tmp);
         pData.m_Height =(float) mapGamePos(tmp);
     }
+
+	//test add
+	const String* strZ = getMapPValue(values, csZ);
+	if ((strZ != 0) && (!strZ->empty()))
+	{
+		long tmp = 0;
+		atoi(*strZ, tmp);
+		pData.m_Z =(long)(tmp);
+	}
+	//test add
+	const String* strAlign = getMapPValue(values, csAlign);
+	if ((strAlign != 0) && (!strAlign->empty()))
+	{
+		long tmp = 0;
+		atoi(*strAlign, tmp);
+		assert((tmp >= 0) && (tmp <= 2));
+		pData.m_AlignType =(TAlignType)(tmp);
+	}
 }
 
 void SpritePosCfg::setSpriteSize(VSprite* pSprite,const String& strSpriteName)

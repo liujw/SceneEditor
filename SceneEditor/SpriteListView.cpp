@@ -1,9 +1,12 @@
 
 #include "stdafx.h"
 #include "mainfrm.h"
-#include "SpriteView.h"
+#include "SpriteListView.h"
 #include "Resource.h"
 #include "SceneEditor.h"
+#include "SceneEditorView.h"
+#include "SpriteSet.h"
+#include "MyGame.h"
 
 #ifdef _DEBUG
 #undef THIS_FILE
@@ -14,15 +17,15 @@ static char THIS_FILE[]=__FILE__;
 /////////////////////////////////////////////////////////////////////////////
 // CFileView
 
-CSpriteView::CSpriteView()
+CSpriteListView::CSpriteListView()
 {
 }
 
-CSpriteView::~CSpriteView()
+CSpriteListView::~CSpriteListView()
 {
 }
 
-BEGIN_MESSAGE_MAP(CSpriteView, CDockablePane)
+BEGIN_MESSAGE_MAP(CSpriteListView, CDockablePane)
 	ON_WM_CREATE()
 	ON_WM_SIZE()
 	ON_WM_CONTEXTMENU()
@@ -36,7 +39,7 @@ END_MESSAGE_MAP()
 /////////////////////////////////////////////////////////////////////////////
 // CWorkspaceBar 消息处理程序
 
-int CSpriteView::OnCreate(LPCREATESTRUCT lpCreateStruct)
+int CSpriteListView::OnCreate(LPCREATESTRUCT lpCreateStruct)
 {
 	if (CDockablePane::OnCreate(lpCreateStruct) == -1)
 		return -1;
@@ -72,20 +75,19 @@ int CSpriteView::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	// 所有命令将通过此控件路由，而不是通过主框架路由:
 	m_wndToolBar.SetRouteCommandsViaFrame(FALSE);
 
-	// 填入一些静态树视图数据(此处只需填入虚拟代码，而不是复杂的数据)
-	FillFileView();
+	InitialSpriteList();
 	AdjustLayout();
 
 	return 0;
 }
 
-void CSpriteView::OnSize(UINT nType, int cx, int cy)
+void CSpriteListView::OnSize(UINT nType, int cx, int cy)
 {
 	CDockablePane::OnSize(nType, cx, cy);
 	AdjustLayout();
 }
 
-void CSpriteView::FillFileView()
+void CSpriteListView::InitialSpriteList()
 {
 	HTREEITEM hRoot = m_wndSpriteView.InsertItem(_T("VBitmapSprite"), 0, 0);
 	m_wndSpriteView.InsertItem(_T("VBitmapBaseSprite"), 0, 0);
@@ -96,7 +98,7 @@ void CSpriteView::FillFileView()
 	
 }
 
-void CSpriteView::OnContextMenu(CWnd* pWnd, CPoint point)
+void CSpriteListView::OnContextMenu(CWnd* pWnd, CPoint point)
 {
 	CTreeCtrl* pWndTree = (CTreeCtrl*) &m_wndSpriteView;
 	ASSERT_VALID(pWndTree);
@@ -125,7 +127,7 @@ void CSpriteView::OnContextMenu(CWnd* pWnd, CPoint point)
 	theApp.GetContextMenuManager()->ShowPopupMenu(IDR_POPUP_EXPLORER, point.x, point.y, this, TRUE);
 }
 
-void CSpriteView::AdjustLayout()
+void CSpriteListView::AdjustLayout()
 {
 	if (GetSafeHwnd() == NULL)
 	{
@@ -141,19 +143,50 @@ void CSpriteView::AdjustLayout()
 	m_wndSpriteView.SetWindowPos(NULL, rectClient.left + 1, rectClient.top + cyTlb + 1, rectClient.Width() - 2, rectClient.Height() - cyTlb - 2, SWP_NOACTIVATE | SWP_NOZORDER);
 }
 
-void CSpriteView::OnProperties()
+void CSpriteListView::OnProperties()
 {
 	AfxMessageBox(_T("精灵属性...."));
 
 }
 
-void CSpriteView::OnAddSprite()
+void CSpriteListView::OnAddSprite()
 {
-	// TODO: 在此处添加命令处理程序代码
-	AfxMessageBox(_T("添加子精灵"));
+	CTreeCtrl* pWndTree = (CTreeCtrl*)&m_wndSpriteView;
+	ASSERT_VALID(pWndTree);
+
+	CString strSpriteType = "";
+	HTREEITEM hTreeItem = pWndTree->GetSelectedItem();
+	if(hTreeItem)
+	{
+		strSpriteType = pWndTree->GetItemText(hTreeItem);		
+	}
+
+	CSpriteSet SpriteSetDlg(strSpriteType);
+	if(SpriteSetDlg.DoModal() == IDOK)
+	{
+		TSpriteTree treeNode;
+				
+		treeNode.setName(SpriteSetDlg.m_strSurfaceName);
+		treeNode.setType(SpriteSetDlg.m_strSpriteType);
+
+		if(SpriteSetDlg.m_strFileName != "")
+		{
+			treeNode.setPath(SpriteSetDlg.m_strFileName);
+			treeNode.setRow(SpriteSetDlg.m_nRow);
+			treeNode.setCol(SpriteSetDlg.m_nCol);
+		}
+
+		g_spriteTree.addASprite(treeNode);
+		m_pMainFrm = (CMainFrame *)theApp.m_pMainWnd;
+		if(m_pMainFrm)
+		{
+			m_pMainFrm->BuildSceneTree();
+			m_pMainFrm->UpdateSceneView(TRUE);
+		}
+	}
 }
 
-void CSpriteView::OnPaint()
+void CSpriteListView::OnPaint()
 {
 	CPaintDC dc(this); // 用于绘制的设备上下文
 
@@ -165,14 +198,14 @@ void CSpriteView::OnPaint()
 	dc.Draw3dRect(rectTree, ::GetSysColor(COLOR_3DSHADOW), ::GetSysColor(COLOR_3DSHADOW));
 }
 
-void CSpriteView::OnSetFocus(CWnd* pOldWnd)
+void CSpriteListView::OnSetFocus(CWnd* pOldWnd)
 {
 	CDockablePane::OnSetFocus(pOldWnd);
 
 	m_wndSpriteView.SetFocus();
 }
 
-void CSpriteView::OnChangeVisualStyle()
+void CSpriteListView::OnChangeVisualStyle()
 {
 	m_wndToolBar.CleanUpLockedImages();
 	m_wndToolBar.LoadBitmap(theApp.m_bHiColorIcons ? IDB_EXPLORER_24 : IDR_EXPLORER, 0, 0, TRUE /* 锁定*/);

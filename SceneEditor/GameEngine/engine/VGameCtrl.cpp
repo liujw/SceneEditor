@@ -110,6 +110,7 @@ void VGameCtrl::draw(VCanvas& dst,bool isScreenSizeChanged,TRect** ppRect,long* 
     if (dst.getIsEmpty()) return;
     //to draw 
     m_drawPipe.drawBegin();
+	m_game->getSpriteEngine().update(0.0); //liujw
     m_game->draw(m_drawPipe,0,0);
     m_drawPipe.drawOut(dst,0,0,(isScreenSizeChanged||m_isFullScreenDraw),ppRect,pRectCount);
     m_drawPipe.drawEnd();

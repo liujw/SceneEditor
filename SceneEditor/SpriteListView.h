@@ -3,7 +3,7 @@
 
 #include "ViewTree.h"
 
-class CClassToolBar : public CMFCToolBar
+class CFileViewToolBar : public CMFCToolBar
 {
 	virtual void OnUpdateCmdUI(CFrameWnd* /*pTarget*/, BOOL bDisableIfNoHndler)
 	{
@@ -13,41 +13,42 @@ class CClassToolBar : public CMFCToolBar
 	virtual BOOL AllowShowOnList() const { return FALSE; }
 };
 
-class CSceneView : public CDockablePane
+class CMainFrame;
+
+class CSpriteListView : public CDockablePane
 {
+// 构造
 public:
-	CSceneView();
-	virtual ~CSceneView();
+	CSpriteListView();
 
 	void AdjustLayout();
 	void OnChangeVisualStyle();
 
+// 特性
 protected:
-	CClassToolBar m_wndToolBar;
-	CViewTree m_wndSceneView;
-	CImageList m_ClassViewImages;
-	UINT m_nCurrSort;
 
-	void FillClassView();
+	CViewTree m_wndSpriteView;
+	//CListCtrl m_wndFileView;
+	CImageList m_FileViewImages;
+	CFileViewToolBar m_wndToolBar;
+		
+	CMainFrame *m_pMainFrm;
 
-// 重写
+protected:
+	void InitialSpriteList();
+
+// 实现
 public:
-	virtual BOOL PreTranslateMessage(MSG* pMsg);
+	virtual ~CSpriteListView();
 
 protected:
 	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
 	afx_msg void OnSize(UINT nType, int cx, int cy);
 	afx_msg void OnContextMenu(CWnd* pWnd, CPoint point);
-	afx_msg void OnClassAddMemberFunction();
-	afx_msg void OnClassAddMemberVariable();
-	afx_msg void OnClassDefinition();
-	afx_msg void OnClassProperties();
-	afx_msg void OnNewFolder();
+	afx_msg void OnProperties();
+	afx_msg void OnAddSprite();
 	afx_msg void OnPaint();
 	afx_msg void OnSetFocus(CWnd* pOldWnd);
-	afx_msg LRESULT OnChangeActiveTab(WPARAM, LPARAM);
-	afx_msg void OnSort(UINT id);
-	afx_msg void OnUpdateSort(CCmdUI* pCmdUI);
 
 	DECLARE_MESSAGE_MAP()
 };

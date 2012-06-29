@@ -5,6 +5,9 @@
 
 #pragma once
 
+//#include "MyGame.h"
+
+//extern TSprite* m_pSpriteTree;
 
 class CSceneEditorDoc : public CDocument
 {

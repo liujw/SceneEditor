@@ -10,6 +10,8 @@
 #include "VSprite.h"
 #include "GameRes.h"
 
+class TSpriteTree;
+
 class VScene:public VSprite{
 public:
     inline explicit VScene(){}
@@ -19,6 +21,9 @@ public:
     }
     inline void loadRes(const char* fileName){
         m_GameRes.loadFromXml(fileName);
+    }
+	inline void loadSurface(TSpriteTree* pSpriteNode){
+        m_GameRes.loadSurface(pSpriteNode);
     }
     inline void doLoadAllRes(){
         m_GameRes.doLoadAllRes();

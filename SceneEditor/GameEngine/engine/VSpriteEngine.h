@@ -58,7 +58,8 @@ private:
     static VSprite* testHitSpriteList(VSpriteList& spriteList,long x0,long y0);
     
     static bool getSpriteIsCanDisposeKeyEvent(VSprite* sprite);
-    
+ 
+public:
     inline VSprite* testCurSprite(long x, long y) {
         return testHitSpriteList(m_spriteList,x,y);
     }

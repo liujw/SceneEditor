@@ -37,13 +37,14 @@ class ISprite:public IEnableAlpha{
 private:
     SpriteDrawRectInfo m_SpriteDrawRectInfo;
 public: 
-    explicit ISprite(){}
+    explicit ISprite(){m_bDrawSpritePos = false;}
     ISprite(const ISprite&); //not allow copy
     ISprite& operator =(const ISprite&); //not allow cop
     virtual ~ISprite()  { disposeEvent_onDelete(); }	
     virtual void getWantDrawRect(long x0,long y0,TRect& out_rect){
         out_rect.setEmpty(x0,y0);
     }
+	void setDrawSpritePos(bool bDraw){ m_bDrawSpritePos = bDraw;}
     void draw(const VCanvas& dst,long x0,long y0);
     //子类改写这个函数来显示自己  //改写这个函数的类一般都要考虑是否需要改写getWantDrawRect
     virtual void doDraw(const VCanvas& dst,long x0,long y0){}
@@ -55,6 +56,8 @@ protected:
     }
     
 private: 
+
+	bool m_bDrawSpritePos;
     //销毁处理 
     VEventDisposer m_deleteEventDisposer;
     void disposeEvent_onDelete() { m_deleteEventDisposer.doEvent(0,0,0);	}
@@ -123,6 +126,8 @@ struct TSpriteMouseEventInfo{
     }
 };
 
+long getGeneralIndx();
+
 struct TSpriteKeyEventInfo{
     int             aChar;
     TKeyBoardState	keyBoardState;
@@ -157,6 +162,7 @@ private:
     long m_height;
     bool m_isChanged; //状态是否发生过改变
     bool m_isInChanging;
+	long m_idx; //
     //float m_layerAlpha; //值域[0..1.0]
     inline void allDrawChanged(VSprite* sprite){
         sprite->drawChanged();
@@ -185,6 +191,8 @@ protected:
         m_isInChanging=false;
         m_mouseEventListener=0;
         //m_layerAlpha=1.0f;
+
+		m_idx = getGeneralIndx();
     }
     virtual void setSpriteWantFocus(VSprite* srcSprite,bool isWantFocus){
         if (m_parent!=0)

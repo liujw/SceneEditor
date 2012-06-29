@@ -2,7 +2,7 @@
 
 #include "VSpriteEngine.h"
 
-//#define _DEBUG_SPRITE_POS
+#define _DEBUG_SPRITE_POS
 #ifdef _DEBUG_SPRITE_POS
 #include "../base/Rand.h"
 #include "VLabelSprite.h"

@@ -103,27 +103,18 @@ void COutputWnd::AdjustHorzScroll(CListBox& wndListBox)
 	wndListBox.SetHorizontalExtent(cxExtentMax);
 	dc.SelectObject(pOldFont);
 }
-
+void COutputWnd::OutputString(CString strInfo)
+{
+	m_wndOutputBuild.AddString(strInfo);
+}
 void COutputWnd::FillBuildWindow()
 {
-	m_wndOutputBuild.AddString(_T("生成输出正显示在此处。"));
-	m_wndOutputBuild.AddString(_T("输出正显示在列表视图的行中"));
-	m_wndOutputBuild.AddString(_T("但您可以根据需要更改其显示方式..."));
+	//m_wndOutputBuild.AddString(_T("生成输出正显示在此处。"));
+	//m_wndOutputBuild.AddString(_T("输出正显示在列表视图的行中"));
+	//m_wndOutputBuild.AddString(_T("但您可以根据需要更改其显示方式..."));
 }
 
-void COutputWnd::FillDebugWindow()
-{
-	m_wndOutputDebug.AddString(_T("调试输出正显示在此处。"));
-	m_wndOutputDebug.AddString(_T("输出正显示在列表视图的行中"));
-	m_wndOutputDebug.AddString(_T("但您可以根据需要更改其显示方式..."));
-}
 
-void COutputWnd::FillFindWindow()
-{
-	m_wndOutputFind.AddString(_T("查找输出正显示在此处。"));
-	m_wndOutputFind.AddString(_T("输出正显示在列表视图的行中"));
-	m_wndOutputFind.AddString(_T("但您可以根据需要更改其显示方式..."));
-}
 
 void COutputWnd::UpdateFonts()
 {

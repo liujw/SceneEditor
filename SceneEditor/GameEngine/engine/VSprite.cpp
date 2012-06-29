@@ -5,14 +5,20 @@
 
 //#define _DEBUG_SPRITE_POS
 
-#ifdef _DEBUG_SPRITE_POS
+//#ifdef _DEBUG_SPRITE_POS //liujw
 #include "../base/Rand.h"
 static VRand debug_rand;
-#endif
+//#endif
 
 void ISprite::draw(const VCanvas& dst,long x0,long y0){
     doDraw(dst,x0,y0);
     //is for debug
+
+	if(m_bDrawSpritePos)  //liujw
+	{
+		VSprite* self=(VSprite*)this;
+		dst.rect(x0, y0, x0+self->getWidth(), y0+self->getHeight(),Color32(debug_rand.next()%256,debug_rand.next()%256,debug_rand.next()%256));
+	}
 #ifdef _DEBUG_SPRITE_POS
     VSprite* self=(VSprite*)this;
     dst.rect(x0, y0, x0+self->getWidth(), y0+self->getHeight(), 
@@ -79,6 +85,11 @@ void VSpriteList::outASprite(ISprite* sprite){
     }
 }
 
+long getGeneralIndx()
+{
+	static long idx = -1;
+	return ++idx;
+}
 
 void VSprite::drawWidthChild(const VCanvas& dst,long x0,long y0){
     VSpriteEngine::drawSpriteWithChilds(dst,x0,y0,this,true);

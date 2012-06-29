@@ -7,6 +7,9 @@
 // XTreeCtrl.h : header file
 //
 
+#define UM_LBUTTONDOWN (WM_USER + 500) 
+#define UM_DRAGITEM (WM_USER + 501) 
+
 /////////////////////////////////////////////////////////////////////////////
 // CXTreeCtrl window
 

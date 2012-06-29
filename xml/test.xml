@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="gb2312"?>
+<game >
+<surfacelist >
+<surface name="BackGround" filename="../pic/cjzy_bg@h.png" />
+<surface name="Humen" filename="../pic/js_dizhu1@h.png" />
+<surface name="StartButton" filename="../pic/cjzyanniu_ksyx(6)@h.png" />
+<surface name="QiJuButton" filename="../pic/cj_dzjlan@h.png" />
+</surfacelist>
+<bitmapcliplist >
+<bitmapclip name="StartButton" surface="StartButton" cols="1" rows="6" />
+<bitmapclip name="QiJuButton" surface="QiJuButton" cols="1" rows="4" />
+</bitmapcliplist>
+</game>

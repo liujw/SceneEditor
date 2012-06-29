@@ -17,6 +17,8 @@
 #define new DEBUG_NEW
 #endif
 
+//TSprite* m_pSpriteTree = NULL;
+
 // CSceneEditorDoc
 
 IMPLEMENT_DYNCREATE(CSceneEditorDoc, CDocument)

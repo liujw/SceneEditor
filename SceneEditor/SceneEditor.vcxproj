@@ -52,10 +52,10 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>.\GameEngine\draw2d;.\GameEngine\engine;.\GameEngine\base;.\import\win32;.\import\importInclude;.\import;.\GameEngine;D:\Documents and Settings\liujw\桌面\SceneEditor\SceneEditor\Classes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\GameEngine\draw2d;.\GameEngine\engine;.\GameEngine\base;.\import\win32;.\import\importInclude;.\import;.\GameEngine;.\Classes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <UseUnicodeForAssemblerListing>
       </UseUnicodeForAssemblerListing>
-      <DisableSpecificWarnings>4819;4018;4244</DisableSpecificWarnings>
+      <DisableSpecificWarnings>4819;4018;4244;4482</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -132,9 +132,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Classes\MyGame.h" />
-    <ClInclude Include="Classes\MyGameCreate.h" />
-    <ClInclude Include="SceneView.h" />
-    <ClInclude Include="SpriteView.h" />
+    <ClInclude Include="Classes\SaveXml.h" />
+    <ClInclude Include="Classes\SpriteFactory.h" />
+    <ClInclude Include="Classes\SpriteTree.h" />
+    <ClInclude Include="DragSprite.h" />
+    <ClInclude Include="SpriteSet.h" />
+    <ClInclude Include="SpriteTreeView.h" />
+    <ClInclude Include="SpriteDraw.h" />
+    <ClInclude Include="SpriteListView.h" />
     <ClInclude Include="GameEngine\base\Base64.h" />
     <ClInclude Include="GameEngine\base\CRC32.H" />
     <ClInclude Include="GameEngine\base\DownLoader.h" />
@@ -294,7 +299,6 @@
     <ClInclude Include="GameEngine\sound\soundDecoder\WavDecoder.h" />
     <ClInclude Include="GameEngine\sound\SoundPlayer.h" />
     <ClInclude Include="GameEngine\sound\wavDispose.h" />
-    <ClInclude Include="SpriteDraw.h" />
     <ClInclude Include="import\importInclude\clipboradImport.h" />
     <ClInclude Include="import\importInclude\EditImport.h" />
     <ClInclude Include="import\importInclude\FileImport.h" />
@@ -324,9 +328,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Classes\MyGame.cpp" />
-    <ClCompile Include="Classes\MyGameCreate.cpp" />
-    <ClCompile Include="SceneView.cpp" />
-    <ClCompile Include="SpriteView.cpp" />
+    <ClCompile Include="Classes\SaveXml.cpp" />
+    <ClCompile Include="Classes\SpriteFactory.cpp" />
+    <ClCompile Include="Classes\SpriteTree.cpp" />
+    <ClCompile Include="DragSprite.cpp" />
+    <ClCompile Include="SpriteSet.cpp" />
+    <ClCompile Include="SpriteTreeView.cpp" />
+    <ClCompile Include="SpriteDraw.cpp" />
+    <ClCompile Include="SpriteListView.cpp" />
     <ClCompile Include="GameEngine\base\Base64.cpp" />
     <ClCompile Include="GameEngine\base\CRC32.CPP" />
     <ClCompile Include="GameEngine\base\DownLoader.cpp" />
@@ -518,7 +527,6 @@
     <ClCompile Include="GameEngine\sound\soundDecoder\WavDecoder.cpp" />
     <ClCompile Include="GameEngine\sound\SoundPlayer.cpp" />
     <ClCompile Include="GameEngine\sound\wavDispose.cpp" />
-    <ClCompile Include="SpriteDraw.cpp" />
     <ClCompile Include="import\importInclude\FileImport.cpp" />
     <ClCompile Include="import\importInclude\IUpdateListenerBase.cpp" />
     <ClCompile Include="import\win32\clipboradImport.cpp" />

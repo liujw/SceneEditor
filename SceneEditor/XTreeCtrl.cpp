@@ -147,6 +147,9 @@ void CXTreeCtrl::OnLButtonUp(UINT nFlags, CPoint point)
 		}
 
 		HTREEITEM  htiNew = CopyBranch( m_hItemDragS,m_hItemDragD,TVI_LAST );
+
+		GetParent()->SendMessage(UM_DRAGITEM, WPARAM(m_hItemDragS), LPARAM(m_hItemDragD)) ;
+
 		DeleteItem( m_hItemDragS );
 		SelectItem( htiNew );
 		KillTimer( m_nScrollTimerID );
@@ -209,6 +212,9 @@ void CXTreeCtrl::OnLButtonDown(UINT nFlags, CPoint point)
 		m_dwDragStart = GetTickCount();
 	
 	CTreeCtrl::OnLButtonDown(nFlags, point);
+
+	TVHITTESTINFO tvHitInfo = { point.x, point.y } ; 
+	GetParent()->SendMessage(UM_LBUTTONDOWN, WPARAM(GetDlgCtrlID()), LPARAM(tvHitInfo.hItem)) ;
 }
 
 void CXTreeCtrl::OnTimer(UINT nIDEvent) 

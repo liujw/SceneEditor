@@ -12,9 +12,10 @@
 #include "SpriteDraw.h"
 #include "SceneEditorDoc.h"
 #include "SceneEditorView.h"
-
-#include "MyGameCreate.h"
-
+#include "MainFrm.h"
+#include "MyGame.h"
+#include "DragSprite.h"
+#include "SaveXml.h"
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
@@ -31,10 +32,16 @@ BEGIN_MESSAGE_MAP(CSceneEditorView, CView)
 	ON_COMMAND(ID_FILE_PRINT_PREVIEW, &CSceneEditorView::OnFilePrintPreview)
 	ON_WM_CONTEXTMENU()
 	ON_WM_RBUTTONUP()
-//	ON_WM_ACTIVATE()
-//	ON_WM_CREATE()
-ON_WM_DESTROY()
-ON_WM_ERASEBKGND()
+	ON_WM_DESTROY()
+	ON_WM_ERASEBKGND()
+	ON_WM_SIZE()
+	ON_WM_LBUTTONDOWN()
+	ON_WM_LBUTTONUP()
+	ON_WM_MOUSEMOVE()
+	ON_COMMAND(ID_OPEN_XML, &CSceneEditorView::OnOpenXml)
+	ON_COMMAND(ID_SAVE_XML, &CSceneEditorView::OnSaveXml)
+	ON_WM_KEYDOWN()
+	ON_WM_DROPFILES()
 END_MESSAGE_MAP()
 
 // CSceneEditorView 构造/析构
@@ -45,6 +52,9 @@ CSceneEditorView::CSceneEditorView()
 	m_pSpriteDraw = NULL;
 	m_bIsThreadQuit = FALSE;
 	m_pThread = NULL;
+	m_bDraging = FALSE;
+	m_strSpriteName = "";
+	m_pSprite = NULL;
 }
 
 CSceneEditorView::~CSceneEditorView()
@@ -57,7 +67,6 @@ BOOL CSceneEditorView::PreCreateWindow(CREATESTRUCT& cs)
 {
 	// TODO: 在此处通过修改
 	//  CREATESTRUCT cs 来修改窗口类或样式
-	//cs.lpszClass = AfxRegisterWndClass(CS_HREDRAW|CS_VREDRAW,0,(HBRUSH)::GetStockObject(RGB(255,255,255)),0); 
 
 	return CView::PreCreateWindow(cs);
 }
@@ -145,13 +154,20 @@ void CSceneEditorView::OnInitialUpdate()
 
 	// TODO: 在此添加专用代码和/或调用基类
 	// TODO:  在此添加您专用的创建代码
-	m_pSpriteDraw = new CSpriteDraw(this);
+	m_pMainFrm = (CMainFrame *)theApp.m_pMainWnd;
+
+	m_pGame = new MyGame(NULL);
+	m_pSpriteDraw = new CSpriteDraw(this,m_pGame);
+
+	m_pMainFrm->BuildSceneTree();
 
 	m_pThread = AfxBeginThread(PaintThread,this,THREAD_PRIORITY_NORMAL,0,CREATE_SUSPENDED);
 	if(m_pThread)
 	{
 		m_pThread->ResumeThread();
 	}
+
+	DragAcceptFiles(TRUE);
 }
 
 UINT CSceneEditorView::PaintThread(LPVOID param)
@@ -216,13 +232,255 @@ void CSceneEditorView::OnDestroy()
 BOOL CSceneEditorView::OnEraseBkgnd(CDC* pDC)
 {
 	// TODO: 在此添加消息处理程序代码和/或调用默认值
-	CRect   rect;   
+	/*CRect   rect;   
 	GetClientRect(&rect);   
-	CBrush   brush;   
-
+	CBrush   brush;  
 	brush.CreateSolidBrush(RGB(255,255,255));   
-	pDC->FillRect(&rect,&brush);   
-	return CView::OnEraseBkgnd(pDC);
+	pDC->FillRect(&rect,&brush);   */
+	//return CView::OnEraseBkgnd(pDC);
 
-	//return TRUE;
+	return TRUE;
+}
+
+
+void CSceneEditorView::OnSize(UINT nType, int cx, int cy)
+{
+	CView::OnSize(nType, cx, cy);
+
+	/*if(m_pSpriteDraw)
+	{
+		m_pSpriteDraw->Initial();
+		Invalidate();
+	}*/
+
+	UpdateView();
+	// TODO: 在此处添加消息处理程序代码
+}
+
+void CSceneEditorView::OnLButtonDown(UINT nFlags, CPoint point)
+{
+	// TODO: 在此添加消息处理程序代码和/或调用默认值
+	if(!m_bDraging)
+	{
+		m_pSprite = m_pGame->GetSprite(point.x,point.y);
+		if(m_pSprite)
+		{
+			m_strSpriteName = m_pGame->GetSpriteName(m_pSprite);
+
+			m_pSpriteTree = m_pGame->GetSpriteTree(m_strSpriteName);
+
+			m_pSprite->setDrawSpritePos(true);
+
+			m_pMainFrm->SetSpriteValue(m_pSpriteTree);
+
+			m_bDraging = TRUE;
+			m_ptMouse = point;
+
+			UpdateView();
+		}
+	}
+	else //
+	{
+		m_ptMouse = point;
+	}
+	CView::OnLButtonDown(nFlags, point);
+}
+
+
+void CSceneEditorView::OnLButtonUp(UINT nFlags, CPoint point)
+{
+	// TODO: 在此添加消息处理程序代码和/或调用默认值
+	if(m_pSprite && m_bDraging)
+	{
+		m_pSprite->setDrawSpritePos(false);
+		
+		UpdateView();
+	}
+
+	m_pSprite = NULL;
+	m_strSpriteName = "";
+
+	m_bDraging = FALSE;
+
+	CView::OnLButtonUp(nFlags, point);
+}
+
+
+void CSceneEditorView::OnMouseMove(UINT nFlags, CPoint point)
+{
+	// TODO: 在此添加消息处理程序代码和/或调用默认值
+	if(m_pSprite && m_bDraging && m_ptMouse != point)
+	{
+		SetNewPosition(point);
+		Invalidate();
+
+		m_ptMouse = point;
+	}
+
+	CView::OnMouseMove(nFlags, point);
+}
+void CSceneEditorView::SetSelectSprite(const String& spriteName)
+{
+	if(m_pSprite)
+	{
+		m_pSprite->setDrawSpritePos(false);
+		m_bDraging = false;
+	}
+
+	m_strSpriteName = spriteName;
+	m_pSprite = m_pGame->GetSprite(spriteName);
+	if(m_pSprite)
+	{
+		m_pSpriteTree = m_pGame->GetSpriteTree(m_strSpriteName);
+
+		m_pMainFrm->SetSpriteValue(m_pSpriteTree);
+
+		m_pSprite->setDrawSpritePos(true);
+
+		UpdateView();
+	}
+	else
+	{
+		AfxMessageBox("没有找到对应名字的精灵对象！");
+	}
+}
+
+void CSceneEditorView::SetNewPosition(CPoint point)
+{
+	long offsetLeft = point.x - m_ptMouse.x;
+	long offsetTop = point.y - m_ptMouse.y;
+
+	if(m_pSprite)
+	{
+		m_pSpriteTree->setSpriteOffset(offsetLeft,offsetTop);
+	
+		m_pMainFrm->SetSpriteValue(m_pSpriteTree);
+	}
+	else
+	{
+		AfxMessageBox("选择拖拽的精灵！");
+	}
+}
+
+void CSceneEditorView::UpdateView(BOOL bReCreate)
+{
+	if(bReCreate)
+	{
+		m_pGame->loadSprite();
+	}
+	Invalidate();
+}
+
+void CSceneEditorView::OnOpenXml()
+{
+	// TODO: 在此添加命令处理程序代码
+	String strXmlFile;
+	CFileDialog dlgFile(TRUE,NULL,NULL,OFN_HIDEREADONLY,"Describe Files (*.xml)|*.xml", NULL);
+	if (dlgFile.DoModal())
+	{
+		strXmlFile = dlgFile.GetPathName();
+		m_pGame->loadRes(strXmlFile);
+
+		m_pMainFrm->BuildSceneTree();
+
+		UpdateView(TRUE);
+	}
+}
+
+
+void CSceneEditorView::OnSaveXml()
+{
+	// TODO: 在此添加命令处理程序代码
+	String filePath = "";
+	String fileTitle = "";
+	CFileDialog dlgFile(FALSE,"xml",NULL,OFN_HIDEREADONLY,"Describe Files (*.xml)|*.xml", NULL);
+	if (dlgFile.DoModal())
+	{
+		filePath = dlgFile.GetPathName();
+		fileTitle = dlgFile.GetFileTitle();
+
+		SaveXml test(&g_spriteTree);
+
+		test.setXmlFileName(fileTitle);
+		test.setXmlFileSavePath(filePath);
+		test.saveConfig();
+		test.saveAll();
+	}
+}
+
+
+void CSceneEditorView::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
+{
+	// TODO: 在此添加消息处理程序代码和/或调用默认值
+	if(m_pSpriteTree)
+	{
+		long nLeftOffset = 0;
+		long nTopOffset = 0;
+		switch(nChar)
+		{
+		case VK_DELETE:
+			MessageBox("你确定要删除该精灵吗？");
+			break;
+		case VK_LEFT:   
+			nLeftOffset -= 1;
+			break;
+		case VK_UP:          
+			nTopOffset -= 1;
+			break;
+		case VK_RIGHT:
+			nLeftOffset += 1;
+			break;
+		case VK_DOWN:
+			nTopOffset += 1;
+			break;
+		}
+
+		if(nLeftOffset != 0 || nTopOffset != 0)
+		{
+			m_pSpriteTree->setSpriteOffset(nLeftOffset,nTopOffset);	
+			m_pMainFrm->SetSpriteValue(m_pSpriteTree);
+			UpdateView();
+		}
+	}
+
+	CView::OnKeyDown(nChar, nRepCnt, nFlags);
+}
+
+
+void CSceneEditorView::OnDropFiles(HDROP hDropInfo)
+{
+	// TODO: 在此添加消息处理程序代码和/或调用默认值
+	char szFileName[512] = {0};
+	//UINT nFiles = DragQueryFile(hDropInfo,0xFFFFFFFF, NULL, 0);
+	
+	String strFileName;
+	DragQueryFile(hDropInfo, 0, szFileName, 512);
+	strFileName = szFileName;
+
+	if(strFileName != "")
+	{
+		CDragSprite DragSpriteDlg(szFileName);
+		if(DragSpriteDlg.DoModal() == IDOK)
+		{
+			TSpriteTree treeNode;
+				
+			treeNode.setName(DragSpriteDlg.m_strSurfaceName);
+			treeNode.setType(DragSpriteDlg.m_strSpriteType);
+	
+			treeNode.setPath(DragSpriteDlg.m_strFileName);
+			treeNode.setRow(DragSpriteDlg.m_nRow);
+			treeNode.setCol(DragSpriteDlg.m_nCol);
+			
+			g_spriteTree.addASprite(treeNode);
+			m_pMainFrm = (CMainFrame *)theApp.m_pMainWnd;
+			if(m_pMainFrm)
+			{
+				m_pMainFrm->BuildSceneTree();
+				m_pMainFrm->UpdateSceneView(TRUE);
+			}
+		}
+	}
+	DragFinish(hDropInfo);
+	CView::OnDropFiles(hDropInfo);
+
 }

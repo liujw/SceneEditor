@@ -4,7 +4,7 @@
 
 #include "stdafx.h"
 #include "SceneEditor.h"
-
+#include "SceneEditorView.h"
 #include "MainFrm.h"
 
 #ifdef _DEBUG
@@ -26,6 +26,8 @@ BEGIN_MESSAGE_MAP(CMainFrame, CFrameWndEx)
 	ON_COMMAND_RANGE(ID_VIEW_APPLOOK_WIN_2000, ID_VIEW_APPLOOK_WINDOWS_7, &CMainFrame::OnApplicationLook)
 	ON_UPDATE_COMMAND_UI_RANGE(ID_VIEW_APPLOOK_WIN_2000, ID_VIEW_APPLOOK_WINDOWS_7, &CMainFrame::OnUpdateApplicationLook)
 	ON_WM_SETTINGCHANGE()
+	//ON_WM_SIZE()
+//	ON_WM_SHOWWINDOW()
 END_MESSAGE_MAP()
 
 static UINT indicators[] =
@@ -118,11 +120,11 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 		return -1;
 	}
 
-	m_wndSpriteView.EnableDocking(CBRS_ALIGN_ANY);
-	m_wndSceneView.EnableDocking(CBRS_ALIGN_ANY);
-	DockPane(&m_wndSpriteView);
+	m_wndSpriteList.EnableDocking(CBRS_ALIGN_ANY);
+	m_wndSpriteTree.EnableDocking(CBRS_ALIGN_ANY);
+	DockPane(&m_wndSpriteList);
 	CDockablePane* pTabbedBar = NULL;
-	m_wndSceneView.AttachToTabWnd(&m_wndSpriteView, DM_SHOW, TRUE, &pTabbedBar);
+	m_wndSpriteTree.AttachToTabWnd(&m_wndSpriteList, DM_SHOW, TRUE, &pTabbedBar);
 	m_wndOutput.EnableDocking(CBRS_ALIGN_ANY);
 	DockPane(&m_wndOutput);
 	m_wndProperties.EnableDocking(CBRS_ALIGN_ANY);
@@ -192,20 +194,20 @@ BOOL CMainFrame::CreateDockingWindows()
 	BOOL bNameValid;
 
 	// 创建场景层次视图
-	CString strSceneView;
-	bNameValid = strSceneView.LoadString(IDS_CLASS_VIEW);
+	CString strSpriteTree;
+	bNameValid = strSpriteTree.LoadString(IDS_CLASS_VIEW);
 	ASSERT(bNameValid);
-	if (!m_wndSceneView.Create(strSceneView, this, CRect(0, 0, 200, 200), TRUE, ID_VIEW_SCENE, WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | CBRS_LEFT | CBRS_FLOAT_MULTI))
+	if (!m_wndSpriteTree.Create(strSpriteTree, this, CRect(0, 0, 200, 200), TRUE, ID_VIEW_SCENE, WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | CBRS_LEFT | CBRS_FLOAT_MULTI))
 	{
 		TRACE0("未能创建“类视图”窗口\n");
 		return FALSE; // 未能创建
 	}
 
 	// 创建精灵列表视图
-	CString strSpriteView;
-	bNameValid = strSpriteView.LoadString(IDS_FILE_VIEW);
+	CString strSpriteList;
+	bNameValid = strSpriteList.LoadString(IDS_FILE_VIEW);
 	ASSERT(bNameValid);
-	if (!m_wndSpriteView.Create(strSpriteView, this, CRect(0, 200, 200, 200), TRUE, ID_VIEW_SPRITE, WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | CBRS_LEFT | CBRS_BOTTOM | CBRS_FLOAT_MULTI))
+	if (!m_wndSpriteList.Create(strSpriteList, this, CRect(0, 200, 200, 200), TRUE, ID_VIEW_SPRITE, WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | CBRS_LEFT | CBRS_BOTTOM | CBRS_FLOAT_MULTI))
 	{
 		TRACE0("未能创建“文件视图”窗口\n");
 		return FALSE; // 未能创建
@@ -238,10 +240,10 @@ BOOL CMainFrame::CreateDockingWindows()
 void CMainFrame::SetDockingWindowIcons(BOOL bHiColorIcons)
 {
 	HICON hFileViewIcon = (HICON) ::LoadImage(::AfxGetResourceHandle(), MAKEINTRESOURCE(bHiColorIcons ? IDI_FILE_VIEW_HC : IDI_FILE_VIEW), IMAGE_ICON, ::GetSystemMetrics(SM_CXSMICON), ::GetSystemMetrics(SM_CYSMICON), 0);
-	m_wndSpriteView.SetIcon(hFileViewIcon, FALSE);
+	m_wndSpriteList.SetIcon(hFileViewIcon, FALSE);
 
 	HICON hClassViewIcon = (HICON) ::LoadImage(::AfxGetResourceHandle(), MAKEINTRESOURCE(bHiColorIcons ? IDI_CLASS_VIEW_HC : IDI_CLASS_VIEW), IMAGE_ICON, ::GetSystemMetrics(SM_CXSMICON), ::GetSystemMetrics(SM_CYSMICON), 0);
-	m_wndSceneView.SetIcon(hClassViewIcon, FALSE);
+	m_wndSpriteTree.SetIcon(hClassViewIcon, FALSE);
 
 	HICON hOutputBarIcon = (HICON) ::LoadImage(::AfxGetResourceHandle(), MAKEINTRESOURCE(bHiColorIcons ? IDI_OUTPUT_WND_HC : IDI_OUTPUT_WND), IMAGE_ICON, ::GetSystemMetrics(SM_CXSMICON), ::GetSystemMetrics(SM_CYSMICON), 0);
 	m_wndOutput.SetIcon(hOutputBarIcon, FALSE);
@@ -378,8 +380,7 @@ BOOL CMainFrame::LoadFrame(UINT nIDResource, DWORD dwDefaultStyle, CWnd* pParent
 	{
 		return FALSE;
 	}
-
-
+	
 	// 为所有用户工具栏启用自定义按钮
 	BOOL bNameValid;
 	CString strCustomize;
@@ -398,9 +399,34 @@ BOOL CMainFrame::LoadFrame(UINT nIDResource, DWORD dwDefaultStyle, CWnd* pParent
 	return TRUE;
 }
 
-
 void CMainFrame::OnSettingChange(UINT uFlags, LPCTSTR lpszSection)
 {
 	CFrameWndEx::OnSettingChange(uFlags, lpszSection);
 	m_wndOutput.UpdateFonts();
 }
+
+void CMainFrame::OutputCodeString(CString strInfo)
+{
+	m_wndOutput.OutputString(strInfo);
+}
+
+void CMainFrame::BuildSceneTree()
+{
+	m_wndSpriteTree.BuildSpriteTree();
+}
+
+void CMainFrame::SetSpriteValue(TSpriteTree* pTreeNode)
+{
+	m_wndProperties.SetSpriteValue(pTreeNode);
+}
+void CMainFrame::UpdateSceneView(BOOL bReCreate)
+{
+	CSceneEditorView* pView=(CSceneEditorView*)(this->GetActiveView());
+	if(pView)
+	{
+		pView->UpdateView(bReCreate);
+	}
+}
+
+
+		

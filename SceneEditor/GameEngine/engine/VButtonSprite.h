@@ -21,7 +21,8 @@ protected:
     virtual void doUpdateChange();
 public:
     //explicit VButtonSprite()(){}
-    explicit VButtonSprite(const VClipCanvas& btnBmpClip,long bmpStartIndex=0,long bmpSkipCount=1):m_btnBmpClip(btnBmpClip),m_btnBmpStartIndex(bmpStartIndex),m_btnBmpSkipCount(bmpSkipCount){}
+	//liujw
+	explicit VButtonSprite(const VClipCanvas& btnBmpClip,long bmpStartIndex=0,long bmpSkipCount=1):VBmpButtonSprite(btnBmpClip.getSubCanvasByClipIndex(0)),m_btnBmpClip(btnBmpClip),m_btnBmpStartIndex(bmpStartIndex),m_btnBmpSkipCount(bmpSkipCount){}
     virtual void doDraw(const VCanvas& dst,long x0,long y0);
 };
 

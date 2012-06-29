@@ -3,7 +3,7 @@
 
 #include "hStream.h"
 
-/*
+
  class XmlNode;
  typedef Vector<XmlNode> XmlNodeList;
  typedef void (*EnumXmlNodeProc)(const XmlNode* node);
@@ -98,7 +98,7 @@
  String m_FileName;
  String m_strData;
  };
- */
+ 
 
 //////////////////
 //只读Xml 

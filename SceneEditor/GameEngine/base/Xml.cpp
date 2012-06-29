@@ -1,6 +1,6 @@
 #include "Xml.h"
 
-/*
+
  const String XMLHEADER_START			= "<?xml";
  const String XMLHEADER_END				= "?>";
  const String XMLCOMMENT_START			= "<!--";
@@ -313,12 +313,16 @@
  {
  setParams(ntDocument, "", "");
  setParent(0);
- loadFromFile(fileName);
+ //test add
+ if (!strIsEqual(fileName, ""))
+ {
+	loadFromFile(fileName);
+ }
  }
  
  void XmlDocument::saveFile_(const char* fileName)
  {
- MyMyTextFileOutputStream txtFile(fileName);
+ MyTextFileOutputStream txtFile(fileName);
  writeXmlHeader(txtFile, m_XmlHeader);
  for (unsigned int i = 0; i < m_Childs.size(); ++i)
  {
@@ -482,7 +486,7 @@
  {
  txtFile.writeLine(strText);
  }
- */
+ 
 
 //////////////////////////////////////////////////////////////////////////
 

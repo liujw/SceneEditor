@@ -3,8 +3,9 @@
 //
 
 #pragma once
-#include "SpriteView.h"
-#include "SceneView.h"
+
+#include "SpriteListView.h"
+#include "SpriteTreeView.h"
 #include "OutputWnd.h"
 #include "PropertiesWnd.h"
 
@@ -17,9 +18,10 @@ protected: // 仅从序列化创建
 
 // 特性
 public:
-
-// 操作
-public:
+	void UpdateSceneView(BOOL bReCreate = FALSE);
+	void BuildSceneTree();
+	void SetSpriteValue(TSpriteTree* pTreeNode);
+	void OutputCodeString(CString strInfo);
 
 // 重写
 public:
@@ -39,8 +41,8 @@ protected:  // 控件条嵌入成员
 	CMFCToolBar       m_wndToolBar;
 	CMFCStatusBar     m_wndStatusBar;
 	CMFCToolBarImages m_UserImages;
-	CSpriteView       m_wndSpriteView;   //精灵列表
-	CSceneView        m_wndSceneView;	 //场景层次
+	CSpriteListView   m_wndSpriteList;   //精灵列表
+	CSpriteTreeView   m_wndSpriteTree;	 //场景层次
 	COutputWnd        m_wndOutput;       //代码输出
 	CPropertiesWnd    m_wndProperties;   //精灵属性
 
@@ -56,6 +58,9 @@ protected:
 
 	BOOL CreateDockingWindows();
 	void SetDockingWindowIcons(BOOL bHiColorIcons);
+public:
+	//afx_msg void OnSize(UINT nType, int cx, int cy);
+	afx_msg void OnShowWindow(BOOL bShow, UINT nStatus);
 };
 
 

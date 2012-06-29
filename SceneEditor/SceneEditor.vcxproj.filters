@@ -715,19 +715,31 @@
     <ClInclude Include="XTreeCtrl.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="SpriteView.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="SceneView.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="Classes\MyGame.h">
       <Filter>classes</Filter>
     </ClInclude>
-    <ClInclude Include="Classes\MyGameCreate.h">
+    <ClInclude Include="Classes\SpriteFactory.h">
       <Filter>classes</Filter>
     </ClInclude>
     <ClInclude Include="SpriteDraw.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\SpriteTree.h">
+      <Filter>classes</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteListView.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteTreeView.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteSet.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\SaveXml.h">
+      <Filter>classes</Filter>
+    </ClInclude>
+    <ClInclude Include="DragSprite.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -1374,19 +1386,31 @@
     <ClCompile Include="XTreeCtrl.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="SpriteView.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="SceneView.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="Classes\MyGame.cpp">
       <Filter>classes</Filter>
     </ClCompile>
-    <ClCompile Include="Classes\MyGameCreate.cpp">
+    <ClCompile Include="Classes\SpriteFactory.cpp">
       <Filter>classes</Filter>
     </ClCompile>
     <ClCompile Include="SpriteDraw.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\SpriteTree.cpp">
+      <Filter>classes</Filter>
+    </ClCompile>
+    <ClCompile Include="SpriteListView.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="SpriteTreeView.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="SpriteSet.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\SaveXml.cpp">
+      <Filter>classes</Filter>
+    </ClCompile>
+    <ClCompile Include="DragSprite.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

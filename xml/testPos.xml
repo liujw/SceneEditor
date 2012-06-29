@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="gb2312"?>
+<game >
+<positions >
+<SpritePos name="m_pHumen" left="10" top="10" />
+<SpritePos name="m_pStartButton" left="700" top="200" />
+<SpritePos name="m_pQiJuButton" left="78" top="21" />
+<SpritePos name="m_pScenEditor" left="78" width="200" height="15" />
+</positions>
+</game>

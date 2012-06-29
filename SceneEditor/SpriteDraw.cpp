@@ -1,4 +1,3 @@
-#include "StdAfx.h"
 #include "SpriteDraw.h"
 
 #include "MyGame.h"
@@ -60,45 +59,56 @@ TCanvasBaseData(long colorBit=32){
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
-CSpriteDraw::CSpriteDraw(CWnd* pWnd)
+CSpriteDraw::CSpriteDraw(CWnd* pWnd,MyGame* pGame)
 {
 	m_pMainWnd = pWnd;
+	m_bReDraw = FALSE;
 
 	m_pCanvasData = new TCanvasBaseData();
 
+	m_pGame = pGame;
+	m_pGameCtrl = new VGameCtrl(m_pGame,NULL); 
+	
 	Initial();
 }
 
 CSpriteDraw::~CSpriteDraw()
 {
-	if(m_pCanvasData)
-		delete m_pCanvasData;
-
 	if(m_pGameCtrl)
 		delete m_pGameCtrl;
+
+	if(m_pCanvasData)
+		delete m_pCanvasData;
 }
 void CSpriteDraw::Initial()
 {
+	m_bReDraw = TRUE;
+
 	m_pMainWnd->GetClientRect(&m_clientRect);
 
 	m_pCanvasData->resizeFast(m_clientRect.Width(),m_clientRect.Height());
-	
-	VNetIOFactory* netIOFactory=new VNetIOFactory();
-	VGame* game=new MyGame(netIOFactory);
-	m_pGameCtrl=new VGameCtrl(game,netIOFactory); 
+
+	m_pGame->loadSprite();
 }
 
-void CSpriteDraw::Draw(CDC* pDC)
+HDC CSpriteDraw::GetSourceDC()
 {
 	TRect* pRect=0;
 	long rectCount=0;
 
 	Pixels32Ref* dst_ref=(Pixels32Ref*)m_pCanvasData;
     VCanvas  dst = VCanvas(*dst_ref);
-	m_pGameCtrl->draw(dst,false,&pRect,&rectCount); 
+	m_pGameCtrl->draw(dst,false,&pRect,&rectCount);
+	return m_pCanvasData->getDC();
+}
+void CSpriteDraw::Draw(CDC* pDC)
+{
+	//if(!m_bReDraw)	return;
 
-	HDC srcDC = m_pCanvasData->getDC();
-	if (srcDC!=0) 
+	//m_bReDraw = FALSE;
+	
+	HDC srcDC = GetSourceDC();
+	if (srcDC) 
 	{
 		BitBlt(pDC->m_hDC,m_clientRect.left,m_clientRect.top,m_clientRect.Width(),m_clientRect.Height(), srcDC,m_clientRect.left,m_clientRect.top,SRCCOPY);
 	}
